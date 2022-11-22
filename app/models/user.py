@@ -13,7 +13,15 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    
+    boards = db.relationship('Board',
+                            back_populates='users')
 
+    lists = db.relationship('List',
+                            back_populates='users')
+    
+    cards = db.relationship('Card',
+                            back_populates='users')
     @property
     def password(self):
         return self.hashed_password
