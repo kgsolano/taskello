@@ -12,10 +12,10 @@ class Board(db.Model):
     userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     
     user = db.relationship('User',
-                            back_populates='board')
+                            back_populates='boards')
     
     lists = db.relationship('List',
-                            back_populates='boards')
+                            back_populates='board')
     
     def to_dict(self):
         return {

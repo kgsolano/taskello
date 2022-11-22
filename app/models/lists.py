@@ -12,13 +12,13 @@ class List(db.Model):
     userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     
     user = db.relationship('User',
-                            back_populates='list')
+                            back_populates='lists')
     
     board = db.relationship('Board',
-                            back_populates='list')
+                            back_populates='lists')
     
     cards = db.relationship('Card',
-                            back_populates='lists')
+                            back_populates='list')
     
     def to_dict(self):
         return {
