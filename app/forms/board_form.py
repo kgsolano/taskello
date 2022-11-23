@@ -6,4 +6,4 @@ from app.models import Board
 
 class BoardForm(FlaskForm):
     boardName = StringField('board name', validators=[DataRequired(message='Please enter a name for the board')])
-    userId = IntegerField('userId', validators=[DataRequired])
+    userId = IntegerField('userId', validators=[DataRequired()])

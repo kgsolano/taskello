@@ -8,5 +8,5 @@ class CardForm(FlaskForm):
     name = StringField('name', validators=[DataRequired(
         message='Please enter a name for this card')])
     description = IntegerField('description')
-    userId = IntegerField('userId', validators=[DataRequired])
-    listId = IntegerField('listId', validators=[DataRequired])
+    userId = IntegerField('userId', validators=[DataRequired()])
+    listId = IntegerField('listId', validators=[DataRequired()])
