@@ -17,8 +17,8 @@ def seed_cards():
 def undo_cards():
     if environment == "production":
         db.session.execute(
-            f"TRUNCATE table {SCHEMA}.lists RESTART IDENTITY CASCADE;")
+            f"TRUNCATE table {SCHEMA}.cards RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute("DELETE FROM lists")
+        db.session.execute("DELETE FROM cards")
 
     db.session.commit()
