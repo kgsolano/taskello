@@ -10,10 +10,10 @@ const loadBoards = (boards) => ({
     boards
 })
 
-const getBoard = (board, allBoards) => ({
+const getBoard = (board) => ({
     type: GET_BOARD,
     board,
-    allBoards
+
 })
 
 const addBoard = (board) => ({

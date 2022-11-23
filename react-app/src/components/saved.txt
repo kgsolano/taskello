@@ -1,0 +1,28 @@
+    return (
+      <div>
+        <h2>Demo's workspace</h2>
+        <h3>Your Boards</h3>
+        <ul>
+          {userBoards.map((board, i) => (
+            <li key={board.id}>
+              {board.boardName}
+              <button onClick={handleEdit(board)}>
+                {showModal && (
+                    <UpdateBoardModal
+                      showModal={showModal}
+                      setShowModal={setShowModal}
+                      board={board}
+                    />
+                )}
+              </button>
+              <button
+                onClick={() => dispatch(deleteBoardThunk(board.id))}
+              >
+                delete
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+}
