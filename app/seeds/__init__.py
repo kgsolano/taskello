@@ -20,9 +20,9 @@ def seed():
         # the schema name (see comment in users.py undo_users function).
         # Make sure to add all your other model's undo functions below
         undo_users()
+        undo_boards()
         undo_lists()
         undo_cards()
-        undo_boards()
     seed_users()
     # Add other seed functions here
     seed_boards()
