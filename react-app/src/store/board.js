@@ -88,13 +88,13 @@ export const addBoardThunk = (board) => async (dispatch) => {
 export const updateBoardThunk = (board, boardId) => async (dispatch) => {
     const response = await fetch(`/api/boards/${boardId}`, {
         method: "PUT",
-        headers: {"Content=Type": "application/json"},
+        headers: {"Content-Type": "application/json"},
         body: JSON.stringify(board)
     })
-
+    console.log("this is the response -------------", response)
     if (response.ok) {
         const data = await response.json();
-      dispatch(addBoard(data.board)); // console log this to confirm
+      dispatch(addBoard(data)); // console log this to confirm
         return data;
     } else if (response.status < 500) {
         const data = await response.json();
