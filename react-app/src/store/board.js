@@ -77,8 +77,8 @@ export const addBoardThunk = (board) => async (dispatch) => {
         return data;
     } else if (response.status < 500) {
         const data = await response.json()
-        if (data) {
-            return data;
+        if (data.errors) {
+            return data.errors;
         }
     } else {
         return ["An error occurred. Please try again"];
@@ -98,8 +98,8 @@ export const updateBoardThunk = (board, boardId) => async (dispatch) => {
         return data;
     } else if (response.status < 500) {
         const data = await response.json();
-        if (data) {
-        return data;
+        if (data.errors) {
+          return data.errors;
         }
     } else {
         return ["An error occurred. Please try again."];
@@ -116,8 +116,8 @@ export const deleteBoardThunk = (boardId) => async (dispatch) => {
         return;
     } else if (response.status < 500) {
         const data = await response.json();
-        if (data) {
-        return data;
+        if (data.errors) {
+          return data.errors;
         }
     } else {
         return ["An error occurred. Please try again."];

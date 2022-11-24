@@ -77,7 +77,7 @@ def delete_board(boardId):
     return {"error": "Board does not exist"}, 404
 
 
-####### List Routes ######
+####### List Routes #######
 
 @board_routes.route('/<int:boardId/lists')
 @login_required
