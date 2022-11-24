@@ -13,15 +13,19 @@ function AddBoard({setShowModal}) {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        setShowModal=false
+        // setShowModal=false
 
         const payload = {
             userId: user.id,
             boardName: title
         };
 
-        await dispatch(addBoardThunk(payload))
-        await dispatch(loadBoardsThunk())
+        let newBoard = await dispatch(addBoardThunk(payload))
+
+        if (newBoard) {
+          setShowModal(false)
+          await dispatch(loadBoardsThunk())
+        }
         history.push('/workspace')
     }
   return (

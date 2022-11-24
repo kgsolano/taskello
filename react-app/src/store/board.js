@@ -12,7 +12,7 @@ const loadBoards = (boards) => ({
 
 const getBoard = (board) => ({
     type: GET_BOARD,
-    board,
+    board
 
 })
 
@@ -91,7 +91,7 @@ export const updateBoardThunk = (board, boardId) => async (dispatch) => {
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(board)
     })
-    console.log("this is the response -------------", response)
+    // console.log("this is the response -------------", response)
     if (response.ok) {
         const data = await response.json();
       dispatch(addBoard(data)); // console log this to confirm
@@ -110,7 +110,7 @@ export const deleteBoardThunk = (boardId) => async (dispatch) => {
     const response = await fetch(`/api/boards/${boardId}`, {
         method: "DELETE"
     })
-
+    console.log("delete response--------", response)
     if (response.ok) {
         dispatch(deleteBoard(boardId));
         return;
@@ -133,8 +133,8 @@ export default function boardReducer(state = initialState, action){
             const allBoards = normalizeArray(action.boards.boards);
             return {...state, allBoards:{...allBoards}}
         case GET_BOARD:
-            const allBoardsForRender = normalizeArray(action.allBoards.boards)
-            const currentBoard = {allBoards: {...allBoardsForRender}, currentBoard: {...action.board}}
+            // const allBoardsForRender = normalizeArray(action.allBoards.boards)
+            const currentBoard = {...state, currentBoard: {...action.board}}
             return currentBoard
         case ADD_BOARD:
             if(!state[action.board.id]) {

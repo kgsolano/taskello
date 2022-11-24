@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { deleteBoardThunk, getBoardThunk, loadBoardsThunk } from '../store/board';
-import BoardItem from './boards/boardItem/boardItem';
+import BoardItem from './boards/boardIndex/boardItem';
 import UpdateBoardModal from './boards/update/updateBoardModal';
 
 

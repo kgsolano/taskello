@@ -10,6 +10,7 @@ import User from './components/User';
 import Workspace from './components/workspace';
 import { authenticate } from './store/session';
 import Boards from './components/boards/boards';
+import BoardView from './components/BoardView';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -45,6 +46,10 @@ function App() {
         <Route path='/workspace' exact={true} >
           <Workspace />
           <Boards />
+        </Route>
+        <Route path='/workspace/:boardId' exatc={true}>
+          <Workspace/>
+          <BoardView />
         </Route>
       </Switch>
     </BrowserRouter>

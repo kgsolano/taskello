@@ -22,21 +22,15 @@ function Boards() {
 
   return (
     <div>
-        <h3>Boards</h3>
-        <ul>
+      <h3>Boards</h3>
+      <ul>
         {userBoards.map((board) => (
-            <li key={board.id}>
-                {board.boardName}
-            </li>
+          <li key={board.id}>{board.boardName}</li>
         ))}
-            <li onClick={() => {setShowModal(true)}}>Create new board</li>
-            <AddBoardModal />
-            {/* {showModal && (
-                <Modal onClose={() => setShowModal(false)}>
-                    <AddBoard setShowModal={setShowModal} />
-                </Modal>
-            )} */}
-        </ul>
+        <li>
+          <AddBoardModal />
+        </li>
+      </ul>
     </div>
   );
 }

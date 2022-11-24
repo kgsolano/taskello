@@ -5,11 +5,11 @@ import { Modal } from "../../context/Modal";
 import UpdateBoard from "./updateBoard";
 
 
-function UpdateBoardModal({showModal, setShowModal, board}) {
+function UpdateBoardModal({board}) {
 //   const [showModal, setShowModal] = useState(false);
 const currBoard = useSelector(state => Object.values(state.board.currentBoard))
-
-console.log(board)
+const [showModal, setShowModal] = useState(false)
+// console.log(board)
 // console.log('show modal from update board modal', showModal)
 
 useEffect(() => {
@@ -18,6 +18,7 @@ useEffect(() => {
 
   return (
     <div>
+      <button onClick={() => {setShowModal(true)}}>Edit</button>
       {showModal && (
         <Modal onClose={() => {setShowModal(false)}}>
           <UpdateBoard showModal={showModal} setShowModal={setShowModal} board={board}/>
