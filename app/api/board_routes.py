@@ -79,7 +79,7 @@ def delete_board(boardId):
 
 ####### List Routes #######
 
-@board_routes.route('/<int:boardId/lists')
+@board_routes.route('/<int:boardId>/lists')
 @login_required
 def list_root(boardId):
     """ 

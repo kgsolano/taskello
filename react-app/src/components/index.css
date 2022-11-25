@@ -1,0 +1,43 @@
+/* NAV BAR */
+.navbar-div {
+    background-color: #076aa7;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 31px; /* fix later */
+        display: flex;
+        align-items: center;
+}
+
+.navbar-div * {
+    display: inline;
+}
+
+.navbar-div li {
+    margin: 0 30px;
+}
+
+/* WORKSPACE LEFT BAR */
+.workspace-root {
+    /* border: 1px solid red; */
+    background-color: #fafbfc;
+    margin-top: 31px; /* fix later */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+    min-width: 260px;
+    width: 260px;
+    padding: 30px; /* fix later */
+}
+
+/* BOARD INDEX (DEFAULT BOARD VIEW) */
+.board-index-div {
+    margin-top: 31px;
+}
+
+/* BOARDVIEW (EACH BOARD WITH LISTS) */
+.boardview-div {
+    margin-top: 31px;
+}

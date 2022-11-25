@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { deleteBoardThunk, getBoardThunk, loadBoardsThunk } from '../store/board';
 import BoardItem from './boards/boardIndex/boardItem';
 import UpdateBoardModal from './boards/update/updateBoardModal';
+import './index.css'
 
 
 function Workspace() {
@@ -12,6 +13,7 @@ function Workspace() {
     const singleBoard = useSelector(state => state.board.currentBoard)
     const userBoards = boards.filter(board => currUser.id === board.userId)
     const [showModal, setShowModal] = useState(false)
+    
 
     // console.log("this is boards", userBoards)
 
@@ -20,7 +22,7 @@ function Workspace() {
     }, [dispatch])
 
     return (
-      <div>
+      <div className='workspace-root'>
         <h2>Demo's workspace</h2>
         <h3>Your Boards</h3>
         <ul>

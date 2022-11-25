@@ -4,6 +4,7 @@ import { loadBoardsThunk } from "../../store/board";
 import { Modal } from "../context/Modal";
 import AddBoard from "./add/addBoard";
 import AddBoardModal from "./add/addBoardModal";
+import '../../index.css'
 
 
 function Boards() {
@@ -21,7 +22,7 @@ function Boards() {
     }, [dispatch]);
 
   return (
-    <div>
+    <div className='board-index-div'>
       <h3>Boards</h3>
       <ul>
         {userBoards.map((board) => (

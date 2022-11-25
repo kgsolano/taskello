@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { deleteBoardThunk, loadBoardsThunk, addBoardThunk, getBoardThunk } from '../../../store/board';
 import AddBoardModal from '../add/addBoardModal';
 import UpdateBoardModal from '../update/updateBoardModal';
+import '../../index.css'
 
 function BoardItem({board}) {
 

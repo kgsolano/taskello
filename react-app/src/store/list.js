@@ -1,8 +1,8 @@
 // CONSTANTS
-const LOAD_LISTS = "boards/LOAD_LISTS";
-const GET_LIST = "boards/GET_LIST";
-const ADD_LIST = "boards/ADD_LIST";
-const DELETE_LIST = "boards/DELETE_LIST";
+const LOAD_LISTS = "lists/LOAD_LISTS";
+const GET_LIST = "lists/GET_LIST";
+const ADD_LIST = "lists/ADD_LIST";
+const DELETE_LIST = "lists/DELETE_LIST";
 
 // ACTIONS
 const loadLists = (lists) => ({
@@ -131,7 +131,6 @@ export default function listReducer(state = initialState, action) {
       const allLists = normalizeArray(action.lists.lists);
       return { ...state, allLists: { ...allLists } };
     case GET_LIST:
-      // const allBoardsForRender = normalizeArray(action.allBoards.boards)
       const currentList = { ...state, currentList: { ...action.list } };
       return currentList;
     case ADD_LIST:
