@@ -122,3 +122,52 @@ export const deleteListThunk = (listId) => async (dispatch) => {
       return ["An error occurred. Please try again."];
     }
 }
+
+// REDUCER
+const initialState = { allLists: {}, currentList: {} };
+export default function listReducer(state = initialState, action) {
+  switch (action.type) {
+    case LOAD_LISTS:
+      const allLists = normalizeArray(action.lists.lists);
+      return { ...state, allLists: { ...allLists } };
+    case GET_LIST:
+      // const allBoardsForRender = normalizeArray(action.allBoards.boards)
+      const currentList = { ...state, currentList: { ...action.list } };
+      return currentList;
+    case ADD_LIST:
+      if (!state[action.list.id]) {
+        const newState = {
+          ...state,
+          allLists: { ...state.allLists, [action.list.id]: action.list },
+        };
+        return newState;
+      }
+      return {
+        ...state,
+        allLists: {
+          ...state.allLists,
+          [action.list.id]: {
+            ...state[action.list.id],
+            ...action.list,
+          },
+        },
+      };
+    case DELETE_LIST:
+      const deleteState = { ...state };
+      delete deleteState.allLists[action.listId];
+      return deleteState;
+    default:
+      return state;
+  }
+}
+
+//HELPERS
+function normalizeArray(dataArray) {
+  if (!dataArray instanceof Array)
+    throw new Error("Normalize problem: data invalid");
+  const obj = {};
+  dataArray.forEach((element) => {
+    obj[element.id] = element;
+  });
+  return obj;
+}
