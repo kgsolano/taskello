@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { loadListsThunk } from '../../store/list'
 import AddList from './AddList'
+import ListItem from './ListItem'
+import SettingsList from './SettingsList'
 
 function List() {
 
@@ -21,12 +23,13 @@ function List() {
     <div>
       <h1>Lists</h1>
       <ul>
-        {lists.map(list => (
-            <li key={list.id}>{list.title}</li>
-        )
-        )}
+        {lists.map((list) => (
+          <li key={list.id}>
+            <ListItem list={list} boardId={boardId}/>
+          </li>
+        ))}
         <li>
-            <AddList />
+          <AddList />
         </li>
       </ul>
     </div>
