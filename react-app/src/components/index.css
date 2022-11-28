@@ -279,4 +279,141 @@
 /* BOARDVIEW (EACH BOARD WITH LISTS) */
 .boardview-div {
     margin-top: 31px;
+    padding-left: 20px;
+    background-color: #0979c0;
+    width: 100%;
+    color: white;
+}
+
+.list-item-parent {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.list-item-div {
+    list-style-type: none;
+    /* border: 1px solid red; */
+    background-color: #ebecf0;
+    color: #172c4e;
+    border-radius: 5px;
+    width: 272px;
+    height: 78px;
+    /* padding-bottom: 5px; */
+    margin: 10px;
+
+}
+
+.list-title-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.list-title {
+    margin: 0;
+}
+
+.list-settings-btn {
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+}
+
+.list-settings-div {
+    /* border: 1px solid red; */
+    box-shadow: 2px 2px 5px grey;
+    background-color: white;
+    z-index: 2;
+    position: absolute;
+    border-radius: 5px;
+    /* display: flex; */
+    /* flex-direction: column; */
+}
+
+.list-icon-span {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.list-settings-icon {
+    /* border: 1px solid red; */
+    width: fit-content;
+    margin: 10px;
+}
+
+.list-edit-form {
+    margin: 0 8px 8px 8px;
+}
+
+
+.add-list-div {
+    list-style-type: none;
+    /* border: 1px solid red; */
+    background-color: #4099cf;
+    color: white;
+    border-radius: 5px;
+    width: 264px;
+    height: 32px;
+    /* padding-bottom: 5px; */
+    margin: 10px;
+    cursor: pointer;
+}
+
+.add-list-li {
+    list-style-type: none;
+}
+
+.add-list-form-div {
+    list-style-type: none;
+    /* border: 1px solid red; */
+    background-color: #ebecf0;
+    color: #172c4e;
+    border-radius: 5px;
+    width: 272px;
+    height: 78px;
+    /* padding-bottom: 5px; */
+    margin: 10px;
+}
+
+.add-list-div {
+    padding-left: 15px;
+}
+
+.add-list-div p {
+    padding: 5px 0;
+}
+
+.add-list-form{ 
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+}
+
+.add-list-input {
+    width: 100%;
+    height: 30%;
+    margin: 5px;
+}
+
+.add-list-btn {
+    color: white;
+    background-color: #0979c0;
+    margin: 0 5px 5px 5px;
+    border-radius: 3px;
+    /* background: none; */
+    border: none;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+.add-list-esc {
+    margin-left: 5px;
+    margin-top: 3px; 
+    cursor: pointer;
 }

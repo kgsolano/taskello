@@ -27,10 +27,8 @@ function BoardView() {
 
   return (
     <div className='boardview-div'>
-      <h2>Boardview: board name {currBoard.boardName}</h2>
-      <ul>
+      <h2>{currBoard.boardName}</h2>
         <List />
-      </ul>
     </div>
   );
 }

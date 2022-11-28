@@ -21,16 +21,13 @@ function List() {
 
   return (
     <div>
-      <h1>Lists</h1>
-      <ul>
+      <ul className='list-item-parent'>
         {lists.map((list) => (
-          <li key={list.id}>
+          <li className='list-item-div' key={list.id}>
             <ListItem list={list} boardId={boardId}/>
           </li>
         ))}
-        <li>
           <AddList />
-        </li>
       </ul>
     </div>
   );

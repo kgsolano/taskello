@@ -34,27 +34,45 @@ function AddList() {
     let addList;
     addDisplay
       ? (addList = (
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              placeholder="Enter list title..."
-              value={title}
-              onChange={addTitle}
-            />
-            <button type="submit">Add list</button>
-          </form>
+          <div className="add-list-form-div">
+            <form className="add-list-form" onSubmit={handleSubmit}>
+              <input
+                className="add-list-input"
+                type="text"
+                placeholder="Enter list title..."
+                value={title}
+                onChange={addTitle}
+              />
+              <button className="add-list-btn" type="submit">
+                Add list
+              </button>
+              <span
+                className="add-list-esc"
+                onClick={() => {
+                  setAddDisplay(!addDisplay);
+                }}
+              >
+                <i class="fa-regular fa-x"></i>
+              </span>
+            </form>
+          </div>
         ))
       : (addList = (
-          <div onClick={() => {setAddDisplay(!addDisplay)}}>
+          <div
+            className="add-list-div"
+            onClick={() => {
+              setAddDisplay(!addDisplay);
+            }}
+          >
             <p>+ Add another list</p>
           </div>
         ));
         
 
   return (
-    <div>
+    <li className='add-list-li'>
         {addList}
-    </div>
+    </li>
   )
 }
 
