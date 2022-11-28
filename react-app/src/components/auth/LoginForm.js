@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 
 const LoginForm = () => {
@@ -18,6 +18,11 @@ const LoginForm = () => {
     }
   };
 
+  const loginDemo = (email, password) => {
+    setEmail(email);
+    setPassword(password);
+  };
+
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -31,34 +36,48 @@ const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={onLogin}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
-      <div>
-        <label htmlFor='email'>Email</label>
-        <input
-          name='email'
-          type='text'
-          placeholder='Email'
-          value={email}
-          onChange={updateEmail}
-        />
-      </div>
-      <div>
-        <label htmlFor='password'>Password</label>
-        <input
-          name='password'
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={updatePassword}
-        />
-        <button type='submit'>Login</button>
-      </div>
-    </form>
+    <div className="login-page-wrapper">
+      <h1>Taskello</h1>
+      <form className="login-form" onSubmit={onLogin}>
+        <div>
+          {errors.map((error, ind) => (
+            <div key={ind}>{error}</div>
+          ))}
+        </div>
+        <h3>Log in to Taskello</h3>
+        <div className="login-form-div">
+          {/* <label htmlFor='email'>Email</label> */}
+          <input
+            className="login-input"
+            name="email"
+            type="text"
+            placeholder="Enter Email"
+            value={email}
+            onChange={updateEmail}
+          />
+
+          {/* <label htmlFor='password'>Password</label> */}
+          <input
+            className="login-input"
+            name="password"
+            type="password"
+            placeholder="Enter Password"
+            value={password}
+            onChange={updatePassword}
+          />
+          <br />
+        </div>
+        <button className="login-btn" type="submit">
+          Login
+        </button>
+        <button className="login-btn" onClick={() => loginDemo('demo@aa.io', 'password')}>Log in as Demo User</button>
+        <Link to="/sign-up" className="sign-up-link">
+          <p>Sign up for an account</p>
+        </Link>
+      </form>
+      <img className='login-pic-left' src="https://i.imgur.com/sereUsZ.png" alt="login-pic-left" />
+      <img className='login-pic-right' src="https://i.imgur.com/Nfq43ZB.png" alt="login-pic-right" />
+    </div>
   );
 };
 

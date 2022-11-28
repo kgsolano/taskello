@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './splash.css'
 
 function SplashPage() {
@@ -20,7 +20,7 @@ function SplashPage() {
         <div className="splash-header-wrapper">
             <h1>Taskello brings all your tasks, teammates, and tools together</h1>
             <p>Keep everything in the same place—even if your team isn’t.</p>
-            <button className='signup-btn'>Sign up - it's free!</button>
+            <Link to='/sign-up' className='signup-btn'>Sign up - it's free!</Link>
         </div>
         <img className='splash-img' src="https://i.imgur.com/L7t1qoA.png" alt="splash-img" />
     </div>
