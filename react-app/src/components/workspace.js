@@ -5,6 +5,7 @@ import AddBoard from './boards/add/addBoard';
 import AddBoardModal from './boards/add/addBoardModal';
 import BoardItem from './boards/boardIndex/boardItem';
 import UpdateBoardModal from './boards/update/updateBoardModal';
+import { Modal } from "./context/Modal";
 import './index.css'
 
 
@@ -31,9 +32,12 @@ function Workspace() {
         <div className ='workspace-board-list'>
           <h3 className ='your-boards'>
             Your Boards <span className='workspace-add-btn' onClick={() => setShowModal(!showModal)}>+</span>
-            {showModal &&
-            <AddBoard />
-          }
+            {showModal && (
+        <Modal onClose={() => setShowModal(false)}>
+          <AddBoard 
+            setShowModal={setShowModal}
+          />
+        </Modal>)}
           </h3>
           <ul className='boards-list-div'>
             {userBoards.map((board) => (
