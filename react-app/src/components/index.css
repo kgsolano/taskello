@@ -20,21 +20,260 @@
 
 /* WORKSPACE LEFT BAR */
 .workspace-root {
-    /* border: 1px solid red; */
+    border: 1px solid #dadde2;
     background-color: #fafbfc;
-    margin-top: 31px; /* fix later */
+    margin-top: 15px; /* fix later */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     height: 100%;
     min-width: 260px;
     width: 260px;
-    padding: 30px; /* fix later */
+    padding: 30px 0 10px;
+}
+
+.workspace-title-div {
+    border-bottom: 1px solid #dadde2;
+}
+
+.workspace-title {
+    margin-top: 5px;
+    margin-left: 50px;
+}
+
+.workspace-board-list {
+    margin-left: 10px;
+}
+
+.your-boards {
+    margin-right: 10px;
+}
+
+.workspace-add-btn {
+    float: right;
+}
+
+/* .boards-list-div {
+    margin-left: 0;
+} */
+
+.workspace-board-item {
+    list-style-type: none;
+    /* margin: 10px; */
+}
+
+.workspace-board-item:hover {
+    background-color: lightgrey;
+}
+
+.boards-list-div {
+    padding: 0;
+}
+
+.board-item-div {
+    padding: 10px;
+    /* width: 100%; */
+}
+
+.settings-btn {
+    height: 25px;
+    width: 25px;
+    float: right;
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    /* visibility: hidden; */
+}
+
+.settings-btn:hover {
+    visibility: visible;
+    background-color: grey;
+}
+
+.board-settings {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-items: flex-end;
+}
+
+.board-edit-div {
+    margin-top: 10px;
+}
+
+.board-settings-btns {
+    float: right;
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    padding: 5px 0;
+}
+
+.delete-btn {
+    /* border: 1px solid red; */
+    align-self: flex-end;
+    width: fit-content;
+    color: red !important;
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-title {
+    align-self: center;
+}
+
+.edit-form-div {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    /* width: 40%; */
+    align-items: flex-start;
+}
+
+.edit-name {
+    margin-bottom: 0;
+    font-weight: 700;
+}
+
+.submit-btn {
+    background-color: #0979c0;
+    color: white;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    padding: 15px 0;
 }
 
 /* BOARD INDEX (DEFAULT BOARD VIEW) */
 .board-index-div {
     margin-top: 31px;
+    width: 100%;
+}
+
+.board-index-header {
+    margin-left: 20px;
+}
+
+.board-index-item-parent {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.board-index-item {
+    list-style-type: none;
+    /* border: 1px solid red; */
+    background-color: #0979c0;
+    color: white;
+    border-radius: 5px;
+    width: 340px;
+    height: 136px;
+    /* padding-bottom: 5px; */
+    margin: 10px;
+    opacity: 0.90;
+}
+
+.board-index-expand {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-left: 10px;
+    
+}
+
+.board-index-item:hover {
+    opacity: 1;
+}
+
+.add-board-modal-div {
+    list-style-type: none;
+}
+
+.add-board-btn {
+    cursor: pointer;
+    list-style-type: none;
+    background-color: #f5f6f8;
+    border-radius: 5px;
+    width: 300px;
+    height: 96px;
+    padding: 20px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* opacity: 0.80; */
+}
+
+.add-board-btn:hover {
+    background-color: lightgrey;
+}
+
+.add-board-text {
+    font-weight: 400;
+    margin: 0;
+    /* align-self: center;
+    justify-self: center; */
+}
+
+.add-board-modal {
+    display: flex;
+    flex-direction: column;
+    /* width: 300px; */
+}
+
+.add-board-modal img {
+    border-top: 1px solid #dfe2e6;
+    padding-top: 10px;
+    /* margin-top: 20px; */
+    /* height: 150px;
+    width: 150px; */
+    align-self: center;
+}
+
+.create-board-heading {
+    align-self: center;
+    padding-bottom: 20px;
+    margin: 0;
+    font-weight: 500;
+}
+
+.add-board-title {
+    margin: 20px 0 0 0;
+    color: #5e6c84;
+    font-weight: 600;
+}
+
+.add-board-title span {
+    color: red;
+}
+
+.add-board-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-modal-text {
+    align-self: flex-start;
+    margin-bottom: 20px;
 }
 
 /* BOARDVIEW (EACH BOARD WITH LISTS) */

@@ -11,7 +11,7 @@ function BoardItem({board}) {
     const dispatch = useDispatch();
     const history = useHistory()
     const boardId = board.id
-    const [showModal, setShowModal] = useState(false);
+    const [showSettings, setShowSettings] = useState(false);
     const [clicked, setClicked] = useState(false)
     // console.log("board from board item", board.id)
 
@@ -27,7 +27,7 @@ function BoardItem({board}) {
 
     const goToBoard = () => {
         dispatch(getBoardThunk(boardId))
-        setClicked(true)
+        setClicked(!clicked)
         setTimeout(() => {
             setClicked(false)
         }, 200)
@@ -41,11 +41,25 @@ function BoardItem({board}) {
 
 
   return (
-    <div onClick={() => {goToBoard()}}>
-        {board.boardName}
-            <UpdateBoardModal board={board} />
-        <button onClick={() => handleDelete(boardId)}>delete</button>
+    <div className='board-item-div'>
+        <div
+      onClick={() => {
+        goToBoard();
+      }}
+    >
+      {board.boardName}
+      <button className='settings-btn' onClick={() => setShowSettings(!showSettings)}>
+        <i className="fa-solid fa-ellipsis"></i>
+      </button>
+        </div>
+      {showSettings &&
+      <div className='board-settings'>
+      <UpdateBoardModal board={board} />
+      <button className='board-settings-btns delete-btn' onClick={() => handleDelete(boardId)}>Delete</button>
+      </div>
+      }
     </div>
+    
   );
 }
 

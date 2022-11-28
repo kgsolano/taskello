@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { deleteBoardThunk, getBoardThunk, loadBoardsThunk } from '../store/board';
+import AddBoard from './boards/add/addBoard';
+import AddBoardModal from './boards/add/addBoardModal';
 import BoardItem from './boards/boardIndex/boardItem';
 import UpdateBoardModal from './boards/update/updateBoardModal';
 import './index.css'
@@ -15,7 +17,7 @@ function Workspace() {
     const [showModal, setShowModal] = useState(false)
     
 
-    // console.log("this is boards", userBoards)
+    console.log("curr user here ", currUser)
 
     useEffect(() => {
         dispatch(loadBoardsThunk())
@@ -23,15 +25,24 @@ function Workspace() {
 
     return (
       <div className='workspace-root'>
-        <h2>Demo's workspace</h2>
-        <h3>Your Boards</h3>
-        <ul>
-          {userBoards.map((board) => (
-            <li key={board.id}>
-              <BoardItem board={board} />
-            </li>
-          ))}
-        </ul>
+        <div className='workspace-title-div'>
+          <h3 className='workspace-title'>{currUser.username}'s workspace</h3>
+        </div>
+        <div className ='workspace-board-list'>
+          <h3 className ='your-boards'>
+            Your Boards <span className='workspace-add-btn' onClick={() => setShowModal(!showModal)}>+</span>
+            {showModal &&
+            <AddBoard />
+          }
+          </h3>
+          <ul className='boards-list-div'>
+            {userBoards.map((board) => (
+              <li className='workspace-board-item' key={board.id}>
+                <BoardItem board={board} />
+              </li>
+            ))}
+          </ul>
+        </div>  
       </div>
     );
 }

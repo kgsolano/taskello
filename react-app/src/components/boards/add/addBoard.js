@@ -29,19 +29,26 @@ function AddBoard({setShowModal}) {
         history.push('/workspace')
     }
   return (
-    <div>
-    <h2>Create board</h2>
-    <h3>Board title *</h3>
-        <form onSubmit={handleSubmit}>
-            <input
-                type="text"
-                placeholder="Board Title"
-                value={title}
-                onChange={addTitle}
-            />
-            <button type='submit'>Create</button>
+    <div className="add-board-modal">
+      <h3 className="create-board-heading">Create board</h3>
+      <img src="https://i.imgur.com/Wnntd5Z.png" alt="add-template-pic" />
+      <p className="add-board-title">
+        Board title <span>*</span>
+      </p>
+      <form className="add-board-form" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Board Name"
+          value={title}
+          onChange={addTitle}
+        />
+        {title.length === 0 &&
+        <p className="add-modal-text">👋 Board title is required</p>
+        }
+        <button className="submit-btn" type="submit">
+          Create
+        </button>
       </form>
-      <p>Board title is required</p>
     </div>
   );
 }

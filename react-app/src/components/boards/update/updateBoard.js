@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { loadBoardsThunk, updateBoardThunk } from '../../../store/board';
+import '../../index.css'
 
 function UpdateBoard({showModal, setShowModal, board}) {
 
@@ -28,19 +29,27 @@ function UpdateBoard({showModal, setShowModal, board}) {
     }
 
     return (
-    <div>
-        <h2>Edit your Board</h2>
-        <p>Name</p>
-        <form onSubmit={handleSubmit}>
+      <div className="edit-form">
+        <img
+          className="workspace-img"
+          src="https://i.imgur.com/Amt9rTd.png"
+          alt="workspace-pic"
+        />
+        <h2 className="edit-title">Edit your Board</h2>
+        <div className="edit-form-div">
+          <p className="edit-name">Name</p>
+          <form onSubmit={handleSubmit}>
             <input
-                type='text'
-                placeholder={board.boardName}
-                value={title}
-                onChange={updateTitle}
+              type="text"
+              placeholder={board.boardName}
+              value={title}
+              onChange={updateTitle}
             />
-        </form>
-    </div>
-    )
+            <button className='submit-btn' type="submit">Save</button>
+          </form>
+        </div>
+      </div>
+    );
 }
 
 export default UpdateBoard
