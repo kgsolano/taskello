@@ -11,6 +11,7 @@ import Workspace from './components/workspace';
 import { authenticate } from './store/session';
 import Boards from './components/boards/boards';
 import BoardView from './components/BoardView';
+import SplashPage from './components/auth/SplashPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -52,6 +53,9 @@ function App() {
           <NavBar />
           <Workspace />
           <BoardView />
+        </Route>
+        <Route path='/'>
+          <SplashPage />
         </Route>
       </Switch>
     </BrowserRouter>

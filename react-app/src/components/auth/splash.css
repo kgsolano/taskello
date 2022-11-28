@@ -1,0 +1,79 @@
+/* SPLASH PAGE */
+
+.splash-page-wrapper {
+    /* background-image: url("https://i.imgur.com/FBUofJw.jpg"); */
+    background-image: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);
+    width: 100vw;
+    height: 100vh;
+}
+
+.splash-navbar {
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    /* fix later */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20%;
+}
+
+.login-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.login-wrapper a  {
+    margin: 0 15px;
+    text-decoration: none;
+    color: inherit;
+    font-weight: 400;
+}
+
+.signup-link {
+    background-color: #0165ff;
+    color: white;
+    height: 50px;
+    padding: 15px 30px;
+}
+
+.signup-text {
+    color: white;
+}
+
+.splash-main-content {
+    display: flex;
+    flex-direction: row;
+    padding: 80px 30px;
+    /* border: 1px solid red; */
+}
+
+.splash-header-wrapper {
+    /* border: 1px solid green; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10%;
+}
+
+.splash-img {
+    height: 30%;
+    width: 30%;
+    padding-top: 50px;
+}
+
+.signup-btn {
+    background-color: #0165ff;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    width: 20%;
+    padding: 2%;
+}
+
+/* LOGIN PAGE */
