@@ -20,6 +20,7 @@ function BoardItem({board}) {
         if (boardId){
             await dispatch(deleteBoardThunk(boardId))
             await dispatch(loadBoardsThunk())
+            history.push('/workspace')
         } else {
             return "board does not exist"
         }
