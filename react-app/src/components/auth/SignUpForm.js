@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { Link, NavLink, Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
 
 const SignUpForm = () => {
@@ -43,51 +43,68 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
-      <div>
-        <label>User Name</label>
-        <input
-          type='text'
-          name='username'
-          onChange={updateUsername}
-          value={username}
-        ></input>
-      </div>
-      <div>
-        <label>Email</label>
-        <input
-          type='text'
-          name='email'
-          onChange={updateEmail}
-          value={email}
-        ></input>
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type='password'
-          name='password'
-          onChange={updatePassword}
-          value={password}
-        ></input>
-      </div>
-      <div>
-        <label>Repeat Password</label>
-        <input
-          type='password'
-          name='repeat_password'
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
-          required={true}
-        ></input>
-      </div>
-      <button type='submit'>Sign Up</button>
-    </form>
+    <div className="login-page-wrapper">
+      <h1>Taskello</h1>
+      <form className="signup-form" onSubmit={onSignUp}>
+        <div>
+          {errors.map((error, ind) => (
+            <div key={ind}>{error}</div>
+          ))}
+        </div>
+        <h3>Sign up for your account</h3>
+        <div className="login-form-div">
+          <input
+            className="login-input"
+            type="text"
+            name="username"
+            placeholder="Enter Username"
+            onChange={updateUsername}
+            value={username}
+          />
+          <input
+            className="login-input"
+            type="text"
+            name="email"
+            placeholder="Enter Email"
+            onChange={updateEmail}
+            value={email}
+          />
+          <input
+            className="login-input"
+            type="password"
+            name="password"
+            placeholder="Enter Password"
+            onChange={updatePassword}
+            value={password}
+          />
+          <input
+            className="login-input"
+            type="password"
+            name="repeat_password"
+            placeholder="Re-enter Password"
+            onChange={updateRepeatPassword}
+            value={repeatPassword}
+            required={true}
+          />
+        </div>
+        <button className="login-btn" type="submit">
+          Sign Up
+        </button>
+        <NavLink to="/sign-up" className="sign-up-link">
+          <p>Already have an account? Log in</p>
+        </NavLink>
+      </form>
+      <img
+        className="login-pic-left"
+        src="https://i.imgur.com/sereUsZ.png"
+        alt="login-pic-left"
+      />
+      <img
+        className="login-pic-right"
+        src="https://i.imgur.com/Nfq43ZB.png"
+        alt="login-pic-right"
+      />
+    </div>
   );
 };
 

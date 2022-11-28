@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, NavLink, Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 
 const LoginForm = () => {
@@ -71,9 +71,9 @@ const LoginForm = () => {
           Login
         </button>
         <button className="login-btn" onClick={() => loginDemo('demo@aa.io', 'password')}>Log in as Demo User</button>
-        <Link to="/sign-up" className="sign-up-link">
+        <NavLink to="/login" className="sign-up-link">
           <p>Sign up for an account</p>
-        </Link>
+        </NavLink>
       </form>
       <img className='login-pic-left' src="https://i.imgur.com/sereUsZ.png" alt="login-pic-left" />
       <img className='login-pic-right' src="https://i.imgur.com/Nfq43ZB.png" alt="login-pic-right" />
