@@ -18,7 +18,9 @@ const NavBar = () => {
     <nav className="navbar-div">
       <ul className="navbar-list-div">
         <li className='navbar-left'>
-          <h2 onClick={() => goHome()}>Taskello</h2>
+          <h2 className='title-div' onClick={() => goHome()}>
+            <img className='logo' src='https://i.imgur.com/H0CFOXf.png' alt='logo'/>Taskello
+            </h2>
           <span>
             <i className="fa-brands fa-github navbar-icon"></i>
           </span>
