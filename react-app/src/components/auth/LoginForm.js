@@ -71,9 +71,9 @@ const LoginForm = () => {
           Login
         </button>
         <button className="login-btn" onClick={() => loginDemo('demo@aa.io', 'password')}>Log in as Demo User</button>
-        <NavLink to="/login" className="sign-up-link">
+        <Link to="/login" className="sign-up-link">
           <p>Sign up for an account</p>
-        </NavLink>
+        </Link>
       </form>
       <img className='login-pic-left' src="https://i.imgur.com/sereUsZ.png" alt="login-pic-left" />
       <img className='login-pic-right' src="https://i.imgur.com/Nfq43ZB.png" alt="login-pic-right" />

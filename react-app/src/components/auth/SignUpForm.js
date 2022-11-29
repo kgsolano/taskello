@@ -90,9 +90,9 @@ const SignUpForm = () => {
         <button className="login-btn" type="submit">
           Sign Up
         </button>
-        <NavLink to="/sign-up" className="sign-up-link">
+        <Link to="/sign-up" className="sign-up-link">
           <p>Already have an account? Log in</p>
-        </NavLink>
+        </Link>
       </form>
       <img
         className="login-pic-left"
