@@ -1,20 +1,24 @@
 
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 
 const NavBar = () => {
-
+  const history = useHistory()
   const currUser = useSelector((state) => state.session.user);
   const userInitial = currUser.username[0].toUpperCase()
+
+  const goHome = () => {
+    history.push('/workspace')
+  } 
 
   console.log("this is curr user", userInitial)
   return (
     <nav className="navbar-div">
       <ul className="navbar-list-div">
         <li className='navbar-left'>
-          <h2>Taskello</h2>
+          <h2 onClick={() => goHome()}>Taskello</h2>
           <span>
             <i className="fa-brands fa-github navbar-icon"></i>
           </span>
