@@ -30,6 +30,9 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+        
     op.create_table('boards',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('boardName', sa.String(length=255), nullable=False),
@@ -37,6 +40,10 @@ def upgrade():
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+        
     op.create_table('lists',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=255), nullable=False),
@@ -46,6 +53,9 @@ def upgrade():
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+
     op.create_table('cards',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=255), nullable=False),
@@ -58,10 +68,13 @@ def upgrade():
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    
     if environment == "production":
-        op.execute(f"ALTER TABLE create_table SET SCHEMA {SCHEMA};")
-        #  add an ALTER TABLE command here for each table created in the file
+        __table_args__ = {'schema': SCHEMA}
+
+    
+    # if environment == "production":
+    #     op.execute(f"ALTER TABLE create_table SET SCHEMA {SCHEMA};")
+    #     #  add an ALTER TABLE command here for each table created in the file
     # ### end Alembic commands ###
 
 
