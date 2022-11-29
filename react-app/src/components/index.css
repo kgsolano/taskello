@@ -8,6 +8,7 @@
         height: 31px; /* fix later */
         display: flex;
         align-items: center;
+        padding: 3px 0 7px;
 }
 
 .navbar-div * {
@@ -20,7 +21,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border: 1px solid white;
+    /* border: 1px solid white; */
+    /* margin-top: 2px; */
 }
 
 .navbar-list-div li {
@@ -38,6 +40,10 @@
     margin-left: 0;
     /* border: 1px solid red; */
 }
+
+/* .navbar-left h3 {
+    cursor: pointer;
+} */
 
 /* .navbar-icon {
     border: 1px solid red;
@@ -65,6 +71,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    /* margin-bottom: 2px; */
 }
 
 .logout-link {
