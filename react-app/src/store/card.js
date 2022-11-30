@@ -126,9 +126,9 @@ export default function cardReducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_CARDS:
       const allCards = normalizeArray(action.cards.cards);
-      return { ...state, allCards: { ...allCards } };
+      return { ...state, allCards: { ...state.allCards, ...allCards } };
     case GET_CARD:
-      const currentCard = { ...state, currentCard: { ...action.card } };
+      const currentCard = { ...state, allCards: {...state.allCards}, currentCard: { ...action.card } };
       return currentCard;
     case ADD_CARD:
       if (!state[action.card.id]) {

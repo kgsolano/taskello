@@ -88,11 +88,11 @@ function ListItem({list, boardId}) {
       <div className='cards-wrapper'>
         <ul className='card-ul-div'>
           {cards.map((card) => (
-            
+            card.listId === listId &&
             <li className='card-item-div' key={card.id}>
               <Card card={card} list={list} listId={listId} />
             </li> 
-          ))}
+            ))}
           <li>
             {/* conditional render var here */}
             {createCard}

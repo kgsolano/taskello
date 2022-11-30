@@ -17,24 +17,25 @@ function Card({card, list, listId}) {
     if (cardId) {
       await dispatch(deleteCardThunk(cardId))
       await dispatch(loadCardsThunk(listId))
+      await dispatch(getCardThunk(listId))
     } else {
       return "card does not exist"
     }
   }
 
-  useEffect(() => 
+  useEffect(() => {
     dispatch(getCardThunk(listId))
-  , [dispatch]);
+  }, [dispatch]);
     
   return (
       <div className="card-item">
-        {card.listId === listId &&
+        
         
       <p className="card-title" onClick={() => setShowModal(true)}>
       {card.name}
       <i class="fa-sharp fa-solid fa-minus" onClick={() => {handleDelete(cardId)}}></i>
       </p>
-      }
+      
       {card.description && <i class="fa-solid fa-align-left"></i>}
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
