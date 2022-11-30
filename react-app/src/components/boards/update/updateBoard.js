@@ -41,8 +41,8 @@ function UpdateBoard({showModal, setShowModal, board}) {
           <form onSubmit={handleSubmit}>
             <input
               type="text"
-              placeholder={board.boardName}
-              value={title}
+              // placeholder={board.boardName}
+              defaultValue={board.boardName}
               onChange={updateTitle}
             />
             <button className='submit-btn' type="submit">Save</button>

@@ -54,8 +54,8 @@ function SettingsList({list, boardId, showSettings, setShowSettings}) {
         <input
           className='list-edit-form'
           type="text"
-          placeholder={list.title}
-          value={title}
+          // placeholder={list.title}
+          defaultValue={list.title}
           onChange={updateTitle}
           />
       </form>
