@@ -481,3 +481,8 @@
     margin-top: 3px; 
     cursor: pointer;
 }
+
+.error-msg {
+    color: red;
+    font-size: inherit;
+}
