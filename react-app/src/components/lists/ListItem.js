@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { loadCardsThunk, addCardThunk } from '../../store/card';
+import { getListThunk } from '../../store/list';
 import Card from '../cards/Card';
 import SettingsList from './SettingsList';
 
@@ -9,14 +10,21 @@ function ListItem({list, boardId}) {
     const dispatch = useDispatch()
     const listId = list.id
     const user = useSelector((state) => state.session.user);
+    const userId = user.id
     const cards = useSelector((state) => Object.values(state.card.allCards));
     const [showSettings, setShowSettings] = useState(false)
     const [cardTitle, setCardTitle] = useState('')
     const [addDisplay, setAddDisplay] = useState(false)
 
+    console.log("this is user", user)
+
     useEffect(() => (
       dispatch(loadCardsThunk(listId))
-    ), [dispatch, listId])
+    ), [dispatch])
+
+    useEffect(() => (
+      dispatch(getListThunk(boardId))
+    ), [dispatch])
 
     const addCard = (e) => setCardTitle(e.target.value)
 
@@ -25,7 +33,7 @@ function ListItem({list, boardId}) {
       setAddDisplay(!addDisplay)
 
       const payload = {
-        userId: user.id,
+        userId,
         listId,
         name: cardTitle,
         // description: null
@@ -80,10 +88,10 @@ function ListItem({list, boardId}) {
       <div className='cards-wrapper'>
         <ul className='card-ul-div'>
           {cards.map((card) => (
-            card.listId === listId ?
+            
             <li className='card-item-div' key={card.id}>
-              <Card card={card} list={list} />
-            </li> : <></>
+              <Card card={card} list={list} listId={listId} />
+            </li> 
           ))}
           <li>
             {/* conditional render var here */}

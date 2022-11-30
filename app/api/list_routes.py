@@ -74,7 +74,7 @@ def create_card(listId):
     if form.validate_on_submit():
         data = form.data
         new_card = Card(
-            name=data['name'], description=data['description'], listId=data['listId'], userId=data['userId'], createdAt=data['createdAt'], updatedAt=data['updatedAt'])
+            name=data['name'], description=data['description'], listId=data['listId'], userId=data['userId'])
         db.session.add(new_card)
         db.session.commit()
         return {'card': new_card.to_dict()}

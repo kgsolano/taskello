@@ -43,7 +43,7 @@ export const loadCardsThunk = (listId) => async (dispatch) => {
   }
 };
 
-export const getListThunk = (cardId) => async (dispatch) => {
+export const getCardThunk = (cardId) => async (dispatch) => {
   const response = await fetch(`/api/cards/${cardId}`);
 
   if (response.ok) {
