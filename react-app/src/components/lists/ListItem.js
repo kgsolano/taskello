@@ -16,7 +16,7 @@ function ListItem({list, boardId}) {
     const [cardTitle, setCardTitle] = useState('')
     const [addDisplay, setAddDisplay] = useState(false)
 
-    console.log("this is user", user)
+    console.log("this is cards---------", cards)
 
     useEffect(() => (
       dispatch(loadCardsThunk(listId))
