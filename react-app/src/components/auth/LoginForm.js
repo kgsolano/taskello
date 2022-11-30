@@ -73,7 +73,7 @@ const LoginForm = () => {
           Login
         </button>
         <button className="login-btn" onClick={() => loginDemo('demo@aa.io', 'password')}>Log in as Demo User</button>
-        <Link to="/login" className="sign-up-link">
+        <Link to="/sign-up" className="sign-up-link">
           <p>Sign up for an account</p>
         </Link>
       </form>
