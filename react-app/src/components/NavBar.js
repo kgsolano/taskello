@@ -17,8 +17,15 @@ const NavBar = () => {
   return (
     <nav className="navbar-div">
       <ul className="navbar-list-div">
-        <li className='navbar-left'>
-          <h2 onClick={() => goHome()}>Taskello</h2>
+        <li className="navbar-left">
+          <h2 onClick={() => goHome()}>
+            <img
+              className="logo"
+              src="https://i.imgur.com/H0CFOXf.png"
+              alt="logo"
+            />
+            Taskello
+          </h2>
           <span>
             <i className="fa-brands fa-github navbar-icon"></i>
           </span>

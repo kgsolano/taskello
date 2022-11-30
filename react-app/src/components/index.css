@@ -30,6 +30,12 @@
     color: white;
 }
 
+.logo {
+    height: 28px;
+    border-radius: 4px;
+    margin: 0 10px;
+}
+
 .navbar-left {
     display: flex;
     flex-direction: row;
