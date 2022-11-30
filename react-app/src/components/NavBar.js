@@ -18,7 +18,7 @@ const NavBar = () => {
     <nav className="navbar-div">
       <ul className="navbar-list-div">
         <li className="navbar-left">
-          <h2 onClick={() => goHome()}>
+          <h2 className='title-div' onClick={() => goHome()}>
             <img
               className="logo"
               src="https://i.imgur.com/H0CFOXf.png"
