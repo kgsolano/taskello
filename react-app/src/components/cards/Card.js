@@ -1,31 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteCardThunk, getCardThunk, loadCardsThunk } from '../../store/card';
-import { getListThunk } from '../../store/list';
+import { getListThunk, loadListsThunk } from '../../store/list';
 import { Modal } from '../context/Modal';
 import CardModal from './CardModal';
 
-function Card({card, list, listId}) {
+function Card({card, list, listId, boardId}) {
   const [showModal, setShowModal] = useState(false)
   const dispatch = useDispatch()
   const cardId = card.id
-  const matchedList = card.listId === listId
 
   console.log("idk what this should be--------",listId)
 
   const handleDelete = async (cardId) => {
     if (cardId) {
       await dispatch(deleteCardThunk(cardId))
-      await dispatch(loadCardsThunk(listId))
-      await dispatch(getCardThunk(listId))
-    } else {
-      return "card does not exist"
-    }
+      await dispatch(loadListsThunk(boardId))
+      console.log("delete worked")
+    } 
   }
 
   useEffect(() => {
-    dispatch(getCardThunk(listId))
-  }, [dispatch]);
+    dispatch(loadCardsThunk(listId))
+  }, [dispatch, listId]);
     
   return (
       <div className="card-item">

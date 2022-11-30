@@ -18,12 +18,13 @@ class List(db.Model):
                             back_populates='lists')
     
     cards = db.relationship('Card',
-                            back_populates='list')
+                            back_populates='list', lazy=False)
     
     def to_dict(self):
         return {
             'id': self.id,
             'title': self.title,
             'boardId': self.boardId,
-            'userId': self.userId
+            'userId': self.userId,
+            'cards': [card.to_dict() for card in self.cards]
         }

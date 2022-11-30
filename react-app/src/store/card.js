@@ -2,7 +2,7 @@
 const LOAD_CARDS = "cards/LOAD_CARDS"
 const GET_CARD = "cards/GET_CARD"
 const ADD_CARD = "cards/ADD_CARD"
-const DELETE_CARD = "cards/ADD_CARDS"
+const DELETE_CARD = "cards/DELETE_CARDS"
 
 // ACTIONS
 const loadCards = (cards) => ({
@@ -126,7 +126,7 @@ export default function cardReducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_CARDS:
       const allCards = normalizeArray(action.cards.cards);
-      return { ...state, allCards: { ...state.allCards, ...allCards } };
+      return { ...state, allCards: {...allCards } };
     case GET_CARD:
       const currentCard = { ...state, allCards: {...state.allCards}, currentCard: { ...action.card } };
       return currentCard;
@@ -151,7 +151,7 @@ export default function cardReducer(state = initialState, action) {
     case DELETE_CARD:
       const deleteState = { ...state };
       delete deleteState.allCards[action.cardId];
-      return deleteState;
+      return {...state, allCards: {...state.allCards}};
     default:
       return state;
   }
