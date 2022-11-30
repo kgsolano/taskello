@@ -25,6 +25,7 @@ class Card(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
+            'name': self.name,
             'description': self.description,
             'userId': self.userId,
             'listId': self.listId,

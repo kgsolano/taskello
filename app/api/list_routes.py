@@ -59,7 +59,7 @@ def card_root(listId):
     Query for all cards in a list
     """
     cards = Card.query.filter(Card.listId == listId).all()
-    return {'card': [card.to_dict() for card in cards]}
+    return {'cards': [card.to_dict() for card in cards]}
 
 
 @list_routes.route('/<int:listId>/cards', methods=['POST'])

@@ -25,7 +25,7 @@ def update_card(cardId):
     """
     card = Card.query.get_or_404(cardId)
 
-    form = Form()
+    form = CardForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():

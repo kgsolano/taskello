@@ -10,8 +10,10 @@ function List() {
 
     const dispatch= useDispatch()
     const lists = useSelector(state => Object.values(state.list.allLists))
+    // const cards = useSelector((state) => Object.values(state.card.allCards));
     const {boardId} = useParams()
-    console.log("this is lists", lists)
+
+    // console.log("this is cards----------", cards)
 
     
 
@@ -20,7 +22,7 @@ function List() {
     },[boardId])
 
   return (
-    <div>
+    <div className='list-item-wrapper'>
       <ul className='list-item-parent'>
         {lists.map((list) => (
           <li className='list-item-div' key={list.id}>

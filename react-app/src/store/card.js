@@ -87,7 +87,7 @@ export const updateCardThunk = (card, cardId) => async (dispatch) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(card),
   });
-
+  console.log("update is making it here--------", response)
   if (response.ok) {
     const data = await response.json();
     dispatch(addCard(data));
@@ -121,7 +121,7 @@ export const deleteCardThunk = (cardId) => async (dispatch) => {
 };
 
 // REDUCER
-const initialState = { allLists: {}, currentList: {} };
+const initialState = { allCards: {}, currentCard: {} };
 export default function cardReducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_CARDS:
