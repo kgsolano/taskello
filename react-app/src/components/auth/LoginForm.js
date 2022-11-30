@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, NavLink, Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import ErrorDisplay from './ErrorDisplay';
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -40,9 +41,10 @@ const LoginForm = () => {
       <h1>Taskello</h1>
       <form className="login-form" onSubmit={onLogin}>
         <div>
-          {errors.map((error, ind) => (
+          {/* {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
-          ))}
+          ))} */}
+          <ErrorDisplay id={'login-error-list'} errors={errors} />
         </div>
         <h3>Log in to Taskello</h3>
         <div className="login-form-div">

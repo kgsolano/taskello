@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, NavLink, Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import ErrorDisplay from './ErrorDisplay';
+
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -19,6 +21,8 @@ const SignUpForm = () => {
       if (data) {
         setErrors(data)
       }
+    } else {
+      setErrors(['Passwords do not match'])
     }
   };
 
@@ -47,44 +51,53 @@ const SignUpForm = () => {
       <h1>Taskello</h1>
       <form className="signup-form" onSubmit={onSignUp}>
         <div>
-          {errors.map((error, ind) => (
+          {/* {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
-          ))}
+          ))} */}
+          <ErrorDisplay id={"signup-error-list"} errors={errors} />
         </div>
         <h3>Sign up for your account</h3>
         <div className="login-form-div">
+          <label className="login-text" />
           <input
             className="login-input"
+            id="sign-up-username"
             type="text"
             name="username"
             placeholder="Enter Username"
             onChange={updateUsername}
             value={username}
           />
+          <label className="login-text" />
           <input
             className="login-input"
+            id="sign-up-email"
             type="text"
             name="email"
             placeholder="Enter Email"
             onChange={updateEmail}
             value={email}
           />
+          <label className="login-text" />
           <input
             className="login-input"
+            id="sign-up-password"
             type="password"
             name="password"
             placeholder="Enter Password"
             onChange={updatePassword}
             value={password}
           />
+          <label className="login-text" />
           <input
             className="login-input"
+            id="sign-up-confirm-password"
             type="password"
             name="repeat_password"
             placeholder="Re-enter Password"
             onChange={updateRepeatPassword}
             value={repeatPassword}
-            required={true}
+            // required={true}
           />
         </div>
         <button className="login-btn" type="submit">
