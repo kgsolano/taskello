@@ -455,9 +455,11 @@
     border-radius: 5px;
     width: 272px;
     height: 78px;
-    /* padding-bottom: 5px; */
+    padding-bottom: 15px;
     margin: 10px;
 }
+
+
 
 .add-list-div {
     padding-left: 15px;
@@ -546,6 +548,13 @@
     width: 100%;
     height: 30px;
     margin: 1% 4% 2% 0;
+    /* border: 1px solid red; */
+}
+
+.add-card-input {
+    border: none;
+        background: none;
+        height: 50px;
 }
 
 .add-list-input {

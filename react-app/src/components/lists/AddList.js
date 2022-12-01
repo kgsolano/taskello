@@ -35,7 +35,7 @@ function AddList() {
     addDisplay
       ? (addList = (
           <div className="add-list-form-div">
-            <form className="add-list-form" onSubmit={handleSubmit}>
+            <form className="add-card-form" onSubmit={handleSubmit}>
               <input
                 className="add-list-input"
                 type="text"
