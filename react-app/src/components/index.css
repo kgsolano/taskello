@@ -15,6 +15,23 @@
     display: inline;
 }
 
+.personal-links:active {
+    text-align: none;
+    color: white;
+}
+.personal-links:visited {
+    text-align: none;
+    color: white;
+}
+.personal-links:hover {
+    text-align: none;
+    color: white;
+}
+.personal-links:focus {
+    text-align: none;
+    color: white;
+}
+
 .navbar-list-div {
     width: 100%;
     padding: 0 5px;
@@ -34,11 +51,13 @@
     height: 28px;
     border-radius: 4px;
     margin: 0 10px;
+    cursor: pointer;
 }
 
 .title-div {
     display: flex;
     flex-direction: row;
+    cursor: grab;
 }
 
 .logo {
@@ -130,6 +149,7 @@
 
 .workspace-add-btn {
     float: right;
+    cursor: grab;
 }
 
 /* .boards-list-div {
@@ -143,6 +163,7 @@
 
 .workspace-board-item:hover {
     background-color: lightgrey;
+    cursor: grab;
 }
 
 .boards-list-div {
@@ -539,6 +560,10 @@
         margin-bottom: 15px;
 }
 
+.card-name-text {
+    cursor: grab;
+}
+
 .card-item {
     padding: 5px 10px;
     /* border: 1px solid red; */
@@ -549,8 +574,20 @@
     /* padding: 5px 10px; */
     background-color: #f3f4f7;
     opacity: 0.60;
+    /* cursor: grab; */
     /* width: 99%; */
     /* height: 100%; */
+}
+
+.add-card-div {
+    cursor: grab;
+}
+
+.fa-square-minus:hover {
+    background-color: grey;
+    border-radius: 3px;
+    /* margin: 5px; */
+    cursor: grab;
 }
 
 

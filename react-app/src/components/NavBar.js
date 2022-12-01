@@ -18,7 +18,7 @@ const NavBar = () => {
     <nav className="navbar-div">
       <ul className="navbar-list-div">
         <li className="navbar-left">
-          <h2 className='title-div' onClick={() => goHome()}>
+          <h2 className="title-div" onClick={() => goHome()}>
             <img
               className="logo"
               src="https://i.imgur.com/H0CFOXf.png"
@@ -26,12 +26,18 @@ const NavBar = () => {
             />
             Taskello
           </h2>
-          <span>
+          <a
+            href="https://github.com/kgsolano/taskello"
+            className="personal-links"
+          >
             <i className="fa-brands fa-github navbar-icon"></i>
-          </span>
-          <span>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/kylesolano/"
+            className="personal-links"
+          >
             <i className="fa-brands fa-linkedin navbar-icon"></i>
-          </span>
+          </a>
         </li>
         <li className="navbar-right">
           <p className="user-circle">{userInitial}</p>

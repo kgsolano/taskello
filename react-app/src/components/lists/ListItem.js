@@ -105,7 +105,7 @@ function ListItem({list, boardId}) {
               setAddDisplay(!addDisplay);
             }}
           >
-            <p>+ Add a card</p>
+            <p className='add-card-div'>+ Add a card</p>
           </div>
         ));
 
