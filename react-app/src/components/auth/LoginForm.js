@@ -38,13 +38,20 @@ const LoginForm = () => {
 
   return (
     <div className="login-page-wrapper">
-      <h1>Taskello</h1>
+      <h1>
+        <img
+          className="splash-logo"
+          src="https://i.imgur.com/H0CFOXf.png"
+          alt="logo"
+        />
+        Taskello
+      </h1>
       <form className="login-form" onSubmit={onLogin}>
         <div>
           {/* {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))} */}
-          <ErrorDisplay id={'login-error-list'} errors={errors} />
+          <ErrorDisplay id={"login-error-list"} errors={errors} />
         </div>
         <h3>Log in to Taskello</h3>
         <div className="login-form-div">
@@ -72,13 +79,26 @@ const LoginForm = () => {
         <button className="login-btn" type="submit">
           Login
         </button>
-        <button className="login-btn" onClick={() => loginDemo('demo@aa.io', 'password')}>Log in as Demo User</button>
+        <button
+          className="login-btn"
+          onClick={() => loginDemo("demo@aa.io", "password")}
+        >
+          Log in as Demo User
+        </button>
         <Link to="/sign-up" className="sign-up-link">
           <p>Sign up for an account</p>
         </Link>
       </form>
-      <img className='login-pic-left' src="https://i.imgur.com/sereUsZ.png" alt="login-pic-left" />
-      <img className='login-pic-right' src="https://i.imgur.com/Nfq43ZB.png" alt="login-pic-right" />
+      <img
+        className="login-pic-left"
+        src="https://i.imgur.com/sereUsZ.png"
+        alt="login-pic-left"
+      />
+      <img
+        className="login-pic-right"
+        src="https://i.imgur.com/Nfq43ZB.png"
+        alt="login-pic-right"
+      />
     </div>
   );
 };

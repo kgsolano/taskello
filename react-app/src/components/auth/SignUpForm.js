@@ -43,12 +43,17 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/workspace' />;
   }
 
   return (
     <div className="login-page-wrapper">
-      <h1>Taskello</h1>
+      <h1> 
+        <img
+          className="splash-logo"
+          src="https://i.imgur.com/H0CFOXf.png"
+          alt="logo"
+        />Taskello</h1>
       <form className="signup-form" onSubmit={onSignUp}>
         <div>
           {/* {errors.map((error, ind) => (

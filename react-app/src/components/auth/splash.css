@@ -7,6 +7,12 @@
     height: 100vh;
 }
 
+.splash-logo {
+    height: 40px;
+    border-radius: 4px;
+    margin: 0 10px;
+}
+
 .splash-navbar {
     background-color: white;
     position: fixed;
@@ -20,6 +26,12 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 20%;
+}
+
+.splash-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .login-wrapper {
