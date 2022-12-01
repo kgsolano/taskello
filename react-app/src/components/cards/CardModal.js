@@ -36,15 +36,16 @@ function CardModal({card, list, setShowModal}) {
     
     editDescription
     ? descriptionText = (
-        <div>
-            <form onSubmit={() => handleSubmit()}>
+        <div className='modal-input-div'>
+            <form className='modal-form-div' onSubmit={() => handleSubmit()}>
               <input
+                className='modal-input'
                 type="textarea"
                 placeholder="Add a more detailed description..."
                 value={description}
                 onChange={newDescription}
                 />
-              <button type="submit">Save</button>
+              <button className='modal-submit-btn' type="submit">Save</button>
             </form>
           </div>
         )
@@ -54,22 +55,22 @@ function CardModal({card, list, setShowModal}) {
 
 
   return (
-    <div>
+    <div className='card-modal-div'>
         {/* title div */}
     <div className='card-title-area'>
-      <img src="https://i.imgur.com/OexFgJj.png" alt="title-card" />
+      <img className='title-card-img' src="https://i.imgur.com/OexFgJj.png" alt="title-card" />
       <div className="modal-title">
         <h3>{card.name}</h3>
-        <p>In list {list.title}</p>
+        <p>In list: {list.title}</p>
       </div>
     </div>
         {/* description div */}
     <div className='card-description-area'>
-        <i className="fa-solid fa-align-left"></i>
+        <i className="fa-solid fa-align-left title-card-img"></i>
         <div className='modal-description'>
-            <span>
+            <span className='description-area'>
                 <h4>Description</h4>
-                <button onClick={() => {setEditDescription(!editDescription)}}>Edit</button>
+                <button className='modal-edit-btn' onClick={() => {setEditDescription(!editDescription)}}>Edit</button>
             </span>
             {descriptionText}
             

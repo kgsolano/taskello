@@ -18,7 +18,7 @@ class List(db.Model):
                             back_populates='lists')
     
     cards = db.relationship('Card',
-                            back_populates='list', lazy=False)
+                            back_populates='list', lazy=False, cascade="all, delete")
     
     def to_dict(self):
         return {

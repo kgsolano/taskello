@@ -363,6 +363,7 @@
     /* border: 1px solid red; */
     background-color: #ebecf0;
     border-radius: 5px;
+    height: fit-content;
 }
 
 .list-item-parent {
@@ -378,7 +379,7 @@
     color: #172c4e;
     border-radius: 5px;
     width: 272px;
-    height: 78px;
+    height: fit-content;
     /* padding-bottom: 5px; */
     margin: 10px;
 
@@ -501,6 +502,7 @@
 /* CARDS */
 .card-ul-div {
     padding-left: 10px;
+    padding-right: 5px;
 }
 
 .card-item-div {
@@ -527,4 +529,144 @@
 
 .card-title {
     margin-top: 0;
+}
+
+.add-card-form-div {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    /* padding-right: 4%; */
+    
+}
+
+.add-card-form {
+    width: 100%;
+    height: 30px;
+    margin: 1% 4% 2% 0;
+}
+
+.add-list-input {
+    border:none;
+    background: none;
+    height:50px;
+}
+
+.add-list-input:focus {
+    border:none;
+    background: none;
+    border-style: hidden;
+    outline: none;
+}
+
+.add-card-li {
+    list-style-type: none;
+}
+
+.card-title {
+    /* border: 1px solid red; */
+    padding:0;
+    height: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* CARD MODAL */
+.card-modal-div {
+    /* border: 1px solid green; */
+    /* background-color: #f4f5f7; */
+    display: flex;
+    flex-direction: column;
+    /* margin: 25px !important; */
+}
+.card-title-area {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.title-card-img {
+    width: 20px;
+    height: 20px;
+}
+
+.modal-title {
+    margin: 0 15px;
+}
+
+.modal-title p {
+    margin: 5px 0;
+    color: #5e6c84;
+}
+
+.modal-title h3 {
+    margin: 0 ;
+}
+
+.card-description-area {
+    /* border: 1px solid red; */
+    display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        margin-bottom: 10px;
+}
+
+.modal-description {
+    margin: 0 15px;
+}
+
+.description-area {
+    display: flex;
+    flex-direction: row;
+    /* margin: 0 15px; */
+}
+
+.description-area h4 {
+    margin: 0 20px 0 0;
+}
+
+.modal-edit-btn {
+    background-color: #eaecf0;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.modal-input-div {
+    /* border: 1px solid red; */
+    margin-right: 20px;
+    width: 85%;
+}
+
+.modal-form-div {
+   display: flex;
+   flex-direction: column;
+   /* border: 1px solid red;; */
+   justify-content: flex-start;
+   align-content: flex-start;
+}
+
+/* .modal-input {
+    width: 45px;
+} */
+
+.modal-submit-btn {
+    align-self: center;
+    margin-top: 10px;
+    background-color: #0979c0;
+        color: white;
+        width: 50%;
+        border: none;
+        border-radius: 5px;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+        padding: 15px 0;
 }

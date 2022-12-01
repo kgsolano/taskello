@@ -15,7 +15,7 @@ function ListItem({list, boardId}) {
     const cards = cardsArr?.length > 0 ?  Object.values(cardsArr) : []
     const [showSettings, setShowSettings] = useState(false)
     const [cardTitle, setCardTitle] = useState('')
-    const [description, setDescription] = useState('')
+    // const [description, setDescription] = useState('')
     const [addDisplay, setAddDisplay] = useState(false)
 
 
@@ -28,7 +28,7 @@ function ListItem({list, boardId}) {
     ), [dispatch])
 
     const addCard = (e) => setCardTitle(e.target.value)
-    const addDescription = (e) => setDescription(e.target.value)
+    // const addDescription = (e) => setDescription(e.target.value)
 
     const handleSubmit = async (e) => {
       e.preventDefault()
@@ -38,7 +38,7 @@ function ListItem({list, boardId}) {
         userId,
         listId,
         name: cardTitle,
-        description
+        // description
       }
 
       let newCard = await dispatch(addCardThunk(payload, listId))
@@ -52,25 +52,22 @@ function ListItem({list, boardId}) {
 
     let createCard;
 
-    addDisplay ?
-    (createCard = (
-      <form onSubmit={handleSubmit}>
-        <input
-          type='text'
-          placeholder='Enter a title for this card...'
-          value={cardTitle}
-          onChange={addCard}
-          />
-          <input
-            type='text'
-            placeholder='Enter a description'
-            value={description}
-            onChange={addDescription}
-            />
-          <button type='submit'>
-            Add Card
-          </button>
-          <span
+    addDisplay
+      ? (createCard = (
+        <form className="add-list-form" onSubmit={handleSubmit}>
+              <div className="card-item-div">
+              <input
+                className="add-list-input"
+                type="text"
+                placeholder="Enter a title for this card..."
+                value={cardTitle}
+                onChange={addCard}
+              />
+              </div>
+              <button className="add-list-btn" type="submit">
+                Add Card
+              </button>
+              <span
                 className="add-list-esc"
                 onClick={() => {
                   setAddDisplay(!addDisplay);
@@ -78,13 +75,18 @@ function ListItem({list, boardId}) {
               >
                 <i class="fa-regular fa-x"></i>
               </span>
-      </form>
-    )) :
-    (createCard = (
-      <div className='add-card-div' onClick={() => {setAddDisplay(!addDisplay)}}>
-        <p>+ Add a card</p>
-      </div>
-    ))
+            </form>
+        ))
+      : (createCard = (
+          <div
+            // className="card-item-div"
+            onClick={() => {
+              setAddDisplay(!addDisplay);
+            }}
+          >
+            <p>+ Add a card</p>
+          </div>
+        ));
 
   return (
     <div className='list-card-wrapper'>
@@ -104,7 +106,7 @@ function ListItem({list, boardId}) {
               
             </li> 
             ))}
-          <li>
+          <li className='add-card-li'>
             {/* conditional render var here */}
             {createCard}
           </li>

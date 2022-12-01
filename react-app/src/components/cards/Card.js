@@ -27,11 +27,12 @@ function Card({card, list, listId, boardId}) {
   return (
       <div className="card-item">
         
-        
-      <p className="card-title" onClick={() => setShowModal(true)}>
-      {card.name}
-      <i class="fa-sharp fa-solid fa-minus" onClick={() => {handleDelete(cardId)}}></i>
-      </p>
+      <div className='card-title'>
+        <p onClick={() => setShowModal(true)}>
+        {card.name}
+        </p>
+        <i class="fa-sharp fa-solid fa-square-minus" onClick={() => {handleDelete(cardId)}}></i>
+      </div>
       
       {card.description && <i class="fa-solid fa-align-left"></i>}
       {showModal && (
