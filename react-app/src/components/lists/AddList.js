@@ -46,7 +46,8 @@ function AddList() {
     let addList;
     addDisplay
       ? (addList = (
-          <div className="add-list-form-div">
+            <form className="add-list-form-div" onSubmit={handleSubmit}>
+              <div >
             {errors.length ? (
               <div>
                 {errors.map((error, i) => (
@@ -58,7 +59,6 @@ function AddList() {
             ) : (
               <></>
             )}
-            <form className="add-list-form" onSubmit={handleSubmit}>
               <input
                 className="add-list-input"
                 type="text"
@@ -81,8 +81,8 @@ function AddList() {
               >
                 <i class="fa-regular fa-x"></i>
               </span>
-            </form>
           </div>
+            </form>
         ))
       : (addList = (
           <div

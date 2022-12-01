@@ -32,6 +32,7 @@ export const loadListsThunk = (boardId) => async (dispatch) => {
 
     if (response.ok) {
       const data = await response.json();
+      console.log("@@@@@@@@@@@@@@", data)
       dispatch(loadLists(data));
       return data;
     } else if (response.status < 500) {

@@ -7,6 +7,6 @@ from wtforms.validators import DataRequired, ValidationError
 class CardForm(FlaskForm):
     name = StringField('name', validators=[DataRequired(
         message='Please enter a name for this card')])
-    description = IntegerField('description')
+    description = StringField('description')
     userId = IntegerField('userId', validators=[DataRequired()])
     listId = IntegerField('listId', validators=[DataRequired()])

@@ -59,7 +59,7 @@ def card_root(listId):
     Query for all cards in a list
     """
     cards = Card.query.filter(Card.listId == listId).all()
-    return {'card': [card.to_dict() for card in cards]}
+    return {'cards': [card.to_dict() for card in cards]}
 
 
 @list_routes.route('/<int:listId>/cards', methods=['POST'])
@@ -74,7 +74,7 @@ def create_card(listId):
     if form.validate_on_submit():
         data = form.data
         new_card = Card(
-            name=data['name'], description=data['description'], listId=data['listId'], userId=data['userId'], createdAt=data['createdAt'], updatedAt=data['updatedAt'])
+            name=data['name'], description=data['description'], listId=data['listId'], userId=data['userId'])
         db.session.add(new_card)
         db.session.commit()
         return {'card': new_card.to_dict()}
