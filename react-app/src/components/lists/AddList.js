@@ -47,7 +47,7 @@ function AddList() {
     addDisplay
       ? (addList = (
             <form className="add-list-form-div" onSubmit={handleSubmit}>
-              <div >
+              <div className='add-list-li-div'>
             {errors.length ? (
               <div>
                 {errors.map((error, i) => (
@@ -60,7 +60,7 @@ function AddList() {
               <></>
             )}
               <input
-                className="add-list-input"
+                className="add-list-input-div"
                 type="text"
                 placeholder="Enter list title..."
                 value={title}

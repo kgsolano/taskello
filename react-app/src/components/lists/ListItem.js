@@ -15,8 +15,18 @@ function ListItem({list, boardId}) {
     const cards = cardsArr?.length > 0 ?  Object.values(cardsArr) : []
     const [showSettings, setShowSettings] = useState(false)
     const [cardTitle, setCardTitle] = useState('')
-    // const [description, setDescription] = useState('')
     const [addDisplay, setAddDisplay] = useState(false)
+    const [errors, setErrors] = useState([]);
+
+    useEffect(() => {
+      const errorsArr = [];
+
+      if (!cardTitle.length) errorsArr.push("Please enter a title");
+      if (cardTitle.length > 50)
+        errorsArr.push("Title must be less than 50 characters");
+
+      setErrors(errorsArr);
+    }, [cardTitle]);
 
 
     useEffect(() => {
@@ -54,8 +64,19 @@ function ListItem({list, boardId}) {
 
     addDisplay
       ? (createCard = (
-        <form className="add-list-form" onSubmit={handleSubmit}>
-              <div className="card-item-div">
+          <form className="add-list-form" onSubmit={handleSubmit}>
+            {errors.length ? (
+              <div>
+                {errors.map((error, i) => (
+                  <div className="error-msg" key={i}>
+                    {error}
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <></>
+            )}
+            <div className="add-card-item-div">
               <input
                 className="add-list-input"
                 type="text"
@@ -63,19 +84,19 @@ function ListItem({list, boardId}) {
                 value={cardTitle}
                 onChange={addCard}
               />
-              </div>
-              <button className="add-list-btn" type="submit">
-                Add Card
-              </button>
-              <span
-                className="add-list-esc"
-                onClick={() => {
-                  setAddDisplay(!addDisplay);
-                }}
-              >
-                <i class="fa-regular fa-x"></i>
-              </span>
-            </form>
+            </div>
+            <button className="add-list-btn" type="submit">
+              Add Card
+            </button>
+            <span
+              className="add-list-esc"
+              onClick={() => {
+                setAddDisplay(!addDisplay);
+              }}
+            >
+              <i class="fa-regular fa-x"></i>
+            </span>
+          </form>
         ))
       : (createCard = (
           <div

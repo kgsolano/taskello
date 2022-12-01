@@ -42,7 +42,7 @@ function CardModal({card, list, setShowModal}) {
                 className='modal-input'
                 type="textarea"
                 placeholder="Add a more detailed description..."
-                value={description}
+                value={card.description ? card.description : description}
                 onChange={newDescription}
                 />
               <button className='modal-submit-btn' type="submit">Save</button>
@@ -69,7 +69,7 @@ function CardModal({card, list, setShowModal}) {
         <i className="fa-solid fa-align-left title-card-img"></i>
         <div className='modal-description'>
             <span className='description-area'>
-                <h4>Description</h4>
+                <h4>Description (optional)</h4>
                 <button className='modal-edit-btn' onClick={() => {setEditDescription(!editDescription)}}>Edit</button>
             </span>
             {descriptionText}
