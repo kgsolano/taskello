@@ -10,13 +10,13 @@ function Card({card, list, listId, boardId}) {
   const dispatch = useDispatch()
   const cardId = card.id
 
-  console.log("idk what this should be--------",listId)
+
 
   const handleDelete = async (cardId) => {
     if (cardId) {
       await dispatch(deleteCardThunk(cardId))
       await dispatch(loadListsThunk(boardId))
-      console.log("delete worked")
+  
     } 
   }
 

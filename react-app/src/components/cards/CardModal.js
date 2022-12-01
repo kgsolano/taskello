@@ -13,19 +13,21 @@ function CardModal({card, list, setShowModal}) {
     const listId = list.id
 
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
+
+
+    const handleSubmit = async () => {
+        // e.preventDefault()
 
         const payload = {
             userId: user.id,
-            listId,
+            listId: list.id,
             description,
             name: card.name
-        }
+        };
 
-        await dispatch(updateCardThunk(payload, cardId))
-        await dispatch(loadCardsThunk(listId))
-        setEditDescription(!editDescription)
+        await dispatch(updateCardThunk(payload, card.id))
+        // await dispatch(loadCardsThunk(listId))
+        // setEditDescription(!editDescription)
     }
 
     const newDescription = (e) => setDescription(e.target.value)

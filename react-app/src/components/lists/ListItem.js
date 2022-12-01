@@ -15,18 +15,12 @@ function ListItem({list, boardId}) {
     const cards = cardsArr?.length > 0 ?  Object.values(cardsArr) : []
     const [showSettings, setShowSettings] = useState(false)
     const [cardTitle, setCardTitle] = useState('')
+    const [description, setDescription] = useState('')
     const [addDisplay, setAddDisplay] = useState(false)
 
-    
-
-    // if (cards == null) return;
-    // console.log("this is cards---------", cardsArr)
-    // console.log("this is list id", listId)
-    console.log("this is cards --------", cards)
 
     useEffect(() => {
       dispatch(loadListsThunk(boardId))
-      console.log("this is working load list############")
 } , [dispatch, cardsArr?.length])
 
     useEffect(() => (
@@ -34,6 +28,7 @@ function ListItem({list, boardId}) {
     ), [dispatch])
 
     const addCard = (e) => setCardTitle(e.target.value)
+    const addDescription = (e) => setDescription(e.target.value)
 
     const handleSubmit = async (e) => {
       e.preventDefault()
@@ -43,7 +38,7 @@ function ListItem({list, boardId}) {
         userId,
         listId,
         name: cardTitle,
-        // description: null
+        description
       }
 
       let newCard = await dispatch(addCardThunk(payload, listId))
@@ -66,6 +61,12 @@ function ListItem({list, boardId}) {
           value={cardTitle}
           onChange={addCard}
           />
+          <input
+            type='text'
+            placeholder='Enter a description'
+            value={description}
+            onChange={addDescription}
+            />
           <button type='submit'>
             Add Card
           </button>
