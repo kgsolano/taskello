@@ -542,6 +542,11 @@
     height: 100%;
     /* padding-right: 4%; */
     
+
+.error-msg {
+    color: red;
+    font-size: inherit;
+}
 }
 
 .add-card-form {
