@@ -46,7 +46,7 @@ function AddList() {
     let addList;
     addDisplay
       ? (addList = (
-          <div className="add-list-form-div">
+          <div >
             {errors.length ? (
               <div>
                 {errors.map((error, i) => (
@@ -58,7 +58,7 @@ function AddList() {
             ) : (
               <></>
             )}
-            <form className="add-card-form" onSubmit={handleSubmit}>
+            <form className="add-list-form-div" onSubmit={handleSubmit}>
               <input
                 className="add-list-input"
                 type="text"

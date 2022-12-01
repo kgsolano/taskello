@@ -438,7 +438,7 @@
     border-radius: 5px;
     width: 264px;
     height: 32px;
-    /* padding-bottom: 5px; */
+    padding-bottom: 5px;
     margin: 10px;
     cursor: pointer;
 }
