@@ -91,3 +91,4 @@ Taskello is a trello clone designed to emulate trello's todo list functionality.
 * A drag and drop feature implemented using the react drag and drop API
 * Ability for users to add comments on other users' cards
 * A calendar view of cards with due dates
+* Change background of boards upon creation
