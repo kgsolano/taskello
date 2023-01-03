@@ -5,6 +5,7 @@ import { loadCardsThunk, addCardThunk } from '../../store/card';
 import { getListThunk, loadListsThunk } from '../../store/list';
 import Card from '../cards/Card';
 import SettingsList from './SettingsList';
+import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd'
 
 function ListItem({list, boardId}) {
     const dispatch = useDispatch()
@@ -110,30 +111,57 @@ function ListItem({list, boardId}) {
         ));
 
   return (
-    <div className='list-card-wrapper'>
-      <span className='list-title-div'>
-        <h4 className='list-title'>{list.title}</h4>
-        <button className='list-settings-btn' onClick={() => setShowSettings(true)}>
-          <i class="fa-solid fa-ellipsis"></i>
-          {showSettings && <SettingsList list={list} boardId={boardId} showSettings={showSettings} setShowSettings={setShowSettings} />}
-        </button>
-      </span>
-      <div className='cards-wrapper'>
-        <ul className='card-ul-div'>
-          {cardsArr?.map((card) => (
-            
-            <li className='card-item-div' key={card.id}>
-              <Card card={card} list={list} listId={listId} boardId={boardId}/>
-              
-            </li> 
-            ))}
-          <li className='add-card-li'>
-            {/* conditional render var here */}
-            {createCard}
-          </li>
-        </ul>
-      </div>
-    </div>
+    <DragDropContext>
+      <Droppable droppableId={listId}>
+        {(provided) => (
+          <div
+            className="list-card-wrapper"
+            {...provided.droppableProps}
+            ref={provided.innerRef}
+          >
+            <span className="list-title-div">
+              <h4 className="list-title">{list.title}</h4>
+              <button
+                className="list-settings-btn"
+                onClick={() => setShowSettings(true)}
+              >
+                <i class="fa-solid fa-ellipsis"></i>
+                {showSettings && (
+                  <SettingsList
+                    list={list}
+                    boardId={boardId}
+                    showSettings={showSettings}
+                    setShowSettings={setShowSettings}
+                  />
+                )}
+              </button>
+            </span>
+            <div className="cards-wrapper">
+              <ul className="card-ul-div">
+                {cardsArr?.map((card, index) => (
+                  <Draggable key={card.id} draggableId={card.id.toString()} index={index}>
+                    {(provided) => (
+                      <li className="card-item-div" {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+                        <Card
+                          card={card}
+                          list={list}
+                          listId={listId}
+                          boardId={boardId}
+                        />
+                      </li>
+                    )}
+                  </Draggable>
+                ))}
+                <li className="add-card-li">
+                  {/* conditional render var here */}
+                  {createCard}
+                </li>
+              </ul>
+            </div>
+          </div>
+        )}
+      </Droppable>
+    </DragDropContext>
   );
 }
 
