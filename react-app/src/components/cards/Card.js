@@ -4,7 +4,6 @@ import { deleteCardThunk, getCardThunk, loadCardsThunk } from '../../store/card'
 import { getListThunk, loadListsThunk } from '../../store/list';
 import { Modal } from '../context/Modal';
 import CardModal from './CardModal';
-import { DragDropContext } from "react-beautiful-dnd";
 
 function Card({card, list, listId, boardId}) {
   const [showModal, setShowModal] = useState(false)

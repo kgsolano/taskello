@@ -5,7 +5,6 @@ import { loadCardsThunk, addCardThunk } from '../../store/card';
 import { getListThunk, loadListsThunk } from '../../store/list';
 import Card from '../cards/Card';
 import SettingsList from './SettingsList';
-import { DragDropContext } from "react-beautiful-dnd";
 
 function ListItem({list, boardId}) {
     const dispatch = useDispatch()
