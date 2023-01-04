@@ -3,6 +3,7 @@ const LOAD_LISTS = "lists/LOAD_LISTS";
 const GET_LIST = "lists/GET_LIST";
 const ADD_LIST = "lists/ADD_LIST";
 const DELETE_LIST = "lists/DELETE_LIST";
+const DRAG = "list/DRAG";
 
 // ACTIONS
 const loadLists = (lists) => ({
@@ -25,6 +26,25 @@ const deleteList = (list) => ({
     type: DELETE_LIST,
     list
 })
+
+export const sort = (
+  droppableIdStart,
+  droppableIdEnd,
+  droppableIndexStart,
+  droppableIndexEnd,
+  draggableId,
+  listId
+) => ({
+  type: DRAG,
+  payload: {
+    droppableIdStart,
+    droppableIdEnd,
+    droppableIndexStart,
+    droppableIndexEnd,
+    draggableId,
+    listId,
+  },
+});
 
 // THUNKS
 export const loadListsThunk = (boardId) => async (dispatch) => {
@@ -156,6 +176,53 @@ export default function listReducer(state = initialState, action) {
       const deleteState = { ...state };
       delete deleteState.allLists[action.listId];
       return deleteState;
+
+    case DRAG:
+      const {
+        droppableIdStart,
+        droppableIdEnd,
+        droppableIndexStart,
+        droppableIndexEnd,
+        draggableId,
+        listId,
+      } = action.payload;
+
+      let dragState = { ...state };
+
+      const list = state[droppableIdStart];
+      const cardArr = state.allLists[Number(listId)].cards;
+      console.log("this is cardArr------", cardArr);
+
+      // cardArr.splice(droppableIndexStart, 1);
+      cardArr.splice(
+        droppableIndexEnd,
+        0,
+        cardArr.splice(droppableIndexStart, 1)[0]
+      );
+      // if (droppableIdStart === droppableIdEnd) {
+      //   const list = state.list.currentList.list
+      //   console.log("please~~~~~~~", list)
+      //   const card = list.cards.splice(droppableIndexStart, 1) // check cards variable for state
+      //   list.cards.splice(droppableIndexEnd, 0, ...card)
+      // }
+
+      const newList = {
+        ...list,
+        cards: cardArr,
+      };
+
+      dragState = {
+        ...state,
+        list: {
+          currentList: {
+            list: {
+              ...newList,
+            },
+          },
+        },
+      };
+
+      return dragState;
     default:
       return state;
   }

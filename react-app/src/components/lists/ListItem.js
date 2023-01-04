@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { loadCardsThunk, addCardThunk, sort } from '../../store/card';
-import { getListThunk, loadListsThunk } from '../../store/list';
+import { loadCardsThunk, addCardThunk } from '../../store/card';
+import { getListThunk, loadListsThunk, sort } from '../../store/list';
 import Card from '../cards/Card';
 import SettingsList from './SettingsList';
 import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd'
@@ -39,7 +39,8 @@ function ListItem({list, boardId}) {
         destination.droppableId,
         source.index,
         destination.index,
-        draggableId
+        draggableId,
+        listId
       ))
     }
 
