@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { loadCardsThunk, addCardThunk } from '../../store/card';
+import { loadCardsThunk, addCardThunk, sort } from '../../store/card';
 import { getListThunk, loadListsThunk } from '../../store/list';
 import Card from '../cards/Card';
 import SettingsList from './SettingsList';
@@ -29,6 +29,19 @@ function ListItem({list, boardId}) {
       setErrors(errorsArr);
     }, [cardTitle]);
 
+    const onDragEnd = (result) => {
+      const { destination, source, draggableId } = result
+
+      if (!destination) return;
+
+      dispatch(sort(
+        source.droppableId,
+        destination.droppableId,
+        source.index,
+        destination.index,
+        draggableId
+      ))
+    }
 
     useEffect(() => {
       dispatch(loadListsThunk(boardId))
@@ -111,8 +124,8 @@ function ListItem({list, boardId}) {
         ));
 
   return (
-    <DragDropContext>
-      <Droppable droppableId={listId}>
+    <DragDropContext onDragEnd={onDragEnd}>
+      <Droppable droppableId={listId.toString()}>
         {(provided) => (
           <div
             className="list-card-wrapper"
@@ -139,9 +152,18 @@ function ListItem({list, boardId}) {
             <div className="cards-wrapper">
               <ul className="card-ul-div">
                 {cardsArr?.map((card, index) => (
-                  <Draggable key={card.id} draggableId={card.id.toString()} index={index}>
+                  <Draggable
+                    key={card.id}
+                    draggableId={card.id.toString()}
+                    index={index}
+                  >
                     {(provided) => (
-                      <li className="card-item-div" {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+                      <li
+                        className="card-item-div"
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        ref={provided.innerRef}
+                      >
                         <Card
                           card={card}
                           list={list}
@@ -157,6 +179,7 @@ function ListItem({list, boardId}) {
                   {createCard}
                 </li>
               </ul>
+              {provided.placeholder}
             </div>
           </div>
         )}

@@ -3,6 +3,7 @@ const LOAD_CARDS = "cards/LOAD_CARDS"
 const GET_CARD = "cards/GET_CARD"
 const ADD_CARD = "cards/ADD_CARD"
 const DELETE_CARD = "cards/DELETE_CARDS"
+const DRAG ='cards/DRAG'
 
 // ACTIONS
 const loadCards = (cards) => ({
@@ -24,6 +25,23 @@ const deleteCard = (card) => ({
     type: DELETE_CARD,
     card
 })
+
+export const sort = (
+  droppableIdStart,
+  droppableIdEnd,
+  droppableIndexStart,
+  droppableIndexEnd,
+  draggableId
+) => ({
+  type: DRAG,
+  payload: {
+    droppableIdStart,
+    droppableIdEnd,
+    droppableIndexStart,
+    droppableIndexEnd,
+    draggableId,
+  },
+});
 
 // THUNKS
 export const loadCardsThunk = (listId) => async (dispatch) => {
@@ -152,6 +170,45 @@ export default function cardReducer(state = initialState, action) {
       const deleteState = { ...state };
       delete deleteState.allCards[action.cardId];
       return {...state, allCards: {...state.allCards}};
+    case DRAG:
+      const {droppableIdStart,
+            droppableIdEnd,
+            droppableIndexStart,
+            droppableIndexEnd,
+            draggableId} = action.payload
+
+      let dragState = {...state}
+
+      const list = state[droppableIdStart]
+      const cardArr = state.list.currentList.list.cards
+
+      cardArr.splice(droppableIndexStart, 1)
+      cardArr.splice(droppableIndexEnd, 0, draggableId)
+      // if (droppableIdStart === droppableIdEnd) {
+      //   const list = state.list.currentList.list
+      //   console.log("please~~~~~~~", list)
+      //   const card = list.cards.splice(droppableIndexStart, 1) // check cards variable for state
+      //   list.cards.splice(droppableIndexEnd, 0, ...card)
+      // }
+
+      const newList = {
+        ...list,
+        cards: cardArr
+      }
+
+      dragState = { 
+        ...state,
+        list: {
+          currentList: {
+            list: {
+              ...newList
+            }
+          }
+        }
+      };
+
+      return dragState;
+
     default:
       return state;
   }
