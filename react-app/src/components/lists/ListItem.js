@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { loadCardsThunk, addCardThunk } from '../../store/card';
-import { getListThunk, loadListsThunk, sort } from '../../store/list';
+import { getListThunk, loadListsThunk, sort, updateListOrder } from '../../store/list';
 import Card from '../cards/Card';
 import SettingsList from './SettingsList';
 import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd'
@@ -19,6 +19,8 @@ function ListItem({list, boardId}) {
     const [addDisplay, setAddDisplay] = useState(false)
     const [errors, setErrors] = useState([]);
 
+    console.log("this is list -----", list)
+
     useEffect(() => {
       const errorsArr = [];
 
@@ -32,16 +34,38 @@ function ListItem({list, boardId}) {
     const onDragEnd = (result) => {
       const { destination, source, draggableId } = result
 
-      if (!destination) return;
+      const droppableIdStart = source.droppableId
+      const droppableIndexStart = source.index
+      const droppableIndexEnd = destination.index
 
-      dispatch(sort(
-        source.droppableId,
-        destination.droppableId,
-        source.index,
-        destination.index,
-        draggableId,
-        listId
-      ))
+      if (!result.destination) return;
+
+      if (
+          destination.droppableId === source.droppableId &&
+          destination.index === source.index
+      ) return;
+
+      const cardOrder = list.cards
+      console.log("this is cardOrder", cardOrder)
+      
+      cardOrder.splice(droppableIndexEnd, 0, cardOrder.splice(droppableIndexStart, 1)[0])
+
+
+      const payload = {
+        cards: cardOrder
+      }
+
+      dispatch(updateListOrder(payload, listId))
+
+
+      // dispatch(sort(
+      //   source.droppableId,
+      //   destination.droppableId,
+      //   source.index,
+      //   destination.index,
+      //   draggableId,
+      //   listId
+      // ))
     }
 
     useEffect(() => {

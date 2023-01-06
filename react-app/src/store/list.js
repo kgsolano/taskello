@@ -27,23 +27,9 @@ const deleteList = (list) => ({
     list
 })
 
-export const sort = (
-  droppableIdStart,
-  droppableIdEnd,
-  droppableIndexStart,
-  droppableIndexEnd,
-  draggableId,
-  listId
-) => ({
+const reorder = (payload) => ({
   type: DRAG,
-  payload: {
-    droppableIdStart,
-    droppableIdEnd,
-    droppableIndexStart,
-    droppableIndexEnd,
-    draggableId,
-    listId,
-  },
+  payload
 });
 
 // THUNKS
@@ -81,6 +67,7 @@ export const getListThunk = (listId) => async (dispatch) => {
       return ["An error occurred. Please try again."];
     }
 }
+
 
 export const addListThunk = (list, boardId) => async (dispatch) => {
     const response = await fetch(`/api/boards/${boardId}/lists`,
@@ -124,6 +111,27 @@ export const updateListThunk = (list, listId) => async (dispatch) => {
     return ["An error occurred. Please try again."];
   }
 };
+
+export const updateListOrder = (payload, listId) => async (dispatch) => {
+  const response = await fetch(`/api/lists/${listId}/reorder`, {
+    method: "PUT",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(payload)
+  })
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(reorder(data));
+    return data;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return ["An error occurred. Please try again."];
+  }
+}
 
 export const deleteListThunk = (listId) => async (dispatch) => {
     const response = await fetch(`/api/lists/${listId}`,
@@ -178,53 +186,45 @@ export default function listReducer(state = initialState, action) {
       return deleteState;
 
     case DRAG:
-      const {
-        droppableIdStart,
-        droppableIdEnd,
-        droppableIndexStart,
-        droppableIndexEnd,
-        draggableId,
-        listId,
-      } = action.payload;
+      // const {
+      //   droppableIdStart,
+      //   droppableIdEnd,
+      //   droppableIndexStart,
+      //   droppableIndexEnd,
+      //   draggableId,
+      //   listId,
+      // } = action.payload;
 
       let dragState = { ...state };
 
-      const list = state[droppableIdStart];
-      const cardArr = state.allLists[Number(listId)].cards;
-      console.log("this is cardArr------", cardArr);
+      // // const list = state[droppableIdStart];
+      // const cardArr = state.allLists[Number(listId)].cards;
+      // console.log("this is cardArr------", cardArr);
 
-      // cardArr.splice(droppableIndexStart, 1);
-      cardArr.splice(
-        droppableIndexEnd,
-        0,
-        cardArr.splice(droppableIndexStart, 1)[0]
-      );
-      // if (droppableIdStart === droppableIdEnd) {
-      //   const list = state.list.currentList.list
-      //   console.log("please~~~~~~~", list)
-      //   const card = list.cards.splice(droppableIndexStart, 1) // check cards variable for state
-      //   list.cards.splice(droppableIndexEnd, 0, ...card)
-      // }
+      // cardArr.splice(
+      //   droppableIndexEnd,
+      //   0,
+      //   cardArr.splice(droppableIndexStart, 1)[0]
+      // );
 
-      const newList = {
-        ...list,
-        cards: cardArr,
-      };
-
-      dragState = {
-        ...state,
-        list: {
-          currentList: {
-            list: {
-              ...newList,
-            },
-          },
-        },
-      };
-
+      // dragState = {
+      //   ...state,
+      //   allLists: {
+      //     ...state.allLists,
+      //     cards: cardArr
+      //   }
+      // };
+      
       return dragState;
-    default:
-      return state;
+
+
+
+      // const newList = {
+      //   ...list,
+      //   cards: cardArr,
+      // };
+      default:
+        return state;
   }
 }
 
