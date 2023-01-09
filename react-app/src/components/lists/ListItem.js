@@ -19,7 +19,7 @@ function ListItem({list, boardId}) {
     const [addDisplay, setAddDisplay] = useState(false)
     const [errors, setErrors] = useState([]);
 
-    console.log("this is list -----", list)
+    console.log("this is cardsArr -----", useSelector((state) => state.list))
 
     useEffect(() => {
       const errorsArr = [];
@@ -52,10 +52,11 @@ function ListItem({list, boardId}) {
 
 
       const payload = {
-        cards: cardOrder
+        cards: cardOrder,
       }
 
       dispatch(updateListOrder(payload, listId))
+      
 
 
       // dispatch(sort(

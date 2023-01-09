@@ -27,9 +27,10 @@ const deleteList = (list) => ({
     list
 })
 
-const reorder = (payload) => ({
+const reorder = (payload, listId) => ({
   type: DRAG,
-  payload
+  payload,
+  listId
 });
 
 // THUNKS
@@ -121,7 +122,7 @@ export const updateListOrder = (payload, listId) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-    dispatch(reorder(data));
+    dispatch(reorder(data, listId));
     return data;
   } else if (response.status < 500) {
     const data = await response.json();
@@ -186,43 +187,13 @@ export default function listReducer(state = initialState, action) {
       return deleteState;
 
     case DRAG:
-      // const {
-      //   droppableIdStart,
-      //   droppableIdEnd,
-      //   droppableIndexStart,
-      //   droppableIndexEnd,
-      //   draggableId,
-      //   listId,
-      // } = action.payload;
 
-      let dragState = { ...state };
-
-      // // const list = state[droppableIdStart];
-      // const cardArr = state.allLists[Number(listId)].cards;
-      // console.log("this is cardArr------", cardArr);
-
-      // cardArr.splice(
-      //   droppableIndexEnd,
-      //   0,
-      //   cardArr.splice(droppableIndexStart, 1)[0]
-      // );
-
-      // dragState = {
-      //   ...state,
-      //   allLists: {
-      //     ...state.allLists,
-      //     cards: cardArr
-      //   }
-      // };
+    let dragState = {...state}
+    console.log("dragstate ",action)
+    dragState.allLists[action.listId].cards = action.payload.cards
       
       return dragState;
 
-
-
-      // const newList = {
-      //   ...list,
-      //   cards: cardArr,
-      // };
       default:
         return state;
   }
