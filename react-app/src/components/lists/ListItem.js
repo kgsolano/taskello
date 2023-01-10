@@ -19,7 +19,7 @@ function ListItem({list, boardId}) {
     const [addDisplay, setAddDisplay] = useState(false)
     const [errors, setErrors] = useState([]);
 
-    console.log("this is cardsArr -----", useSelector((state) => state.list))
+    // console.log("this is cardsArr -----", useSelector((state) => state.list))
 
     useEffect(() => {
       const errorsArr = [];
@@ -56,17 +56,7 @@ function ListItem({list, boardId}) {
       }
 
       dispatch(updateListOrder(payload, listId))
-      
-
-
-      // dispatch(sort(
-      //   source.droppableId,
-      //   destination.droppableId,
-      //   source.index,
-      //   destination.index,
-      //   draggableId,
-      //   listId
-      // ))
+    
     }
 
     useEffect(() => {

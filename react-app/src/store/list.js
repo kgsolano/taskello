@@ -119,9 +119,11 @@ export const updateListOrder = (payload, listId) => async (dispatch) => {
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(payload)
   })
+  // console.log("############", response.json())
 
   if (response.ok) {
-    const data = await response.json();
+    const data = await response.json(); // data comes back in same order as to_dict()
+    console.log("data from thunk", data)
     dispatch(reorder(data, listId));
     return data;
   } else if (response.status < 500) {
@@ -189,11 +191,10 @@ export default function listReducer(state = initialState, action) {
     case DRAG:
 
     let dragState = {...state}
-    console.log("dragstate ",action)
-    dragState.allLists[action.listId].cards = action.payload.cards
+    console.log("dragstate ",action.payload)
+    dragState.allLists[action.listId].cards = action.payload.list.cards
       
       return dragState;
-
       default:
         return state;
   }
