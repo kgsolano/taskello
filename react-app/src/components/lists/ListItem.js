@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { loadCardsThunk, addCardThunk } from '../../store/card';
-import { getListThunk, loadListsThunk, sort, updateListOrder } from '../../store/list';
+import { getListThunk, loadListsThunk, reorder, sort, updateListOrder } from '../../store/list';
 import Card from '../cards/Card';
 import SettingsList from './SettingsList';
 import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd'
@@ -49,13 +49,16 @@ function ListItem({list, boardId}) {
       console.log("this is cardOrder", cardOrder)
       
       cardOrder.splice(droppableIndexEnd, 0, cardOrder.splice(droppableIndexStart, 1)[0])
-
+      
+      const cardOrderId = cardOrder.map((card) => card.id)
 
       const payload = {
-        cards: cardOrder,
+        card_order: cardOrderId
       }
 
-      dispatch(updateListOrder(payload, listId))
+      dispatch(reorder(payload, listId))
+
+      // dispatch(updateListOrder(payload, listId))
     
     }
 

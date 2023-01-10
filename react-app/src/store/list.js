@@ -27,7 +27,7 @@ const deleteList = (list) => ({
     list
 })
 
-const reorder = (payload, listId) => ({
+export const reorder = (payload, listId) => ({
   type: DRAG,
   payload,
   listId
@@ -192,7 +192,7 @@ export default function listReducer(state = initialState, action) {
 
     let dragState = {...state}
     console.log("dragstate ",action.payload)
-    dragState.allLists[action.listId].cards = action.payload.list.cards
+    dragState.allLists[action.listId].card_order = action.payload
       
       return dragState;
       default:
