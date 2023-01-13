@@ -3,7 +3,7 @@ const LOAD_LISTS = "lists/LOAD_LISTS";
 const GET_LIST = "lists/GET_LIST";
 const ADD_LIST = "lists/ADD_LIST";
 const DELETE_LIST = "lists/DELETE_LIST";
-const DRAG = "list/DRAG";
+// const DRAG = "list/DRAG";
 
 // ACTIONS
 const loadLists = (lists) => ({
@@ -27,11 +27,11 @@ const deleteList = (list) => ({
     list
 })
 
-export const reorder = (payload, listId) => ({
-  type: DRAG,
-  payload,
-  listId
-});
+// export const reorder = (payload, listId) => ({
+//   type: DRAG,
+//   payload,
+//   listId
+// });
 
 // THUNKS
 export const loadListsThunk = (boardId) => async (dispatch) => {
@@ -113,28 +113,29 @@ export const updateListThunk = (list, listId) => async (dispatch) => {
   }
 };
 
-export const updateListOrder = (payload, listId) => async (dispatch) => {
-  const response = await fetch(`/api/lists/${listId}/reorder`, {
-    method: "PUT",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(payload)
-  })
-  // console.log("############", response.json())
+// export const updateListOrder = (payload, listId) => async (dispatch) => {
+//   const response = await fetch(`/api/lists/${listId}/reorder`, {
+//     method: "PUT",
+//     headers: {"Content-Type": "application/json"},
+//     body: JSON.stringify(payload)
+//   })
+//   console.log("############", payload)
+//   // between here and below data gets reordered to default order
 
-  if (response.ok) {
-    const data = await response.json(); // data comes back in same order as to_dict()
-    console.log("data from thunk", data)
-    dispatch(reorder(data, listId));
-    return data;
-  } else if (response.status < 500) {
-    const data = await response.json();
-    if (data.errors) {
-      return data.errors;
-    }
-  } else {
-    return ["An error occurred. Please try again."];
-  }
-}
+//   if (response.ok) {
+//     const data = await response.json(); // data comes back in same order as to_dict()
+//     console.log("data from thunk", data)
+//     dispatch(reorder(data, listId));
+//     return data;
+//   } else if (response.status < 500) {
+//     const data = await response.json();
+//     if (data.errors) {
+//       return data.errors;
+//     }
+//   } else {
+//     return ["An error occurred. Please try again."];
+//   }
+// }
 
 export const deleteListThunk = (listId) => async (dispatch) => {
     const response = await fetch(`/api/lists/${listId}`,
@@ -188,13 +189,14 @@ export default function listReducer(state = initialState, action) {
       delete deleteState.allLists[action.listId];
       return deleteState;
 
-    case DRAG:
+    // case DRAG:
 
-    let dragState = {...state}
-    console.log("dragstate ",action.payload)
-    dragState.allLists[action.listId].card_order = action.payload
-      
-      return dragState;
+    // let dragState = {...state}
+    // console.log("this is payload", action.payload)
+    // // console.log("dragstate ",action.payload.list.card_order)
+    // dragState.allLists[action.listId].card_order = action.payload.card_order
+
+      // return dragState;
       default:
         return state;
   }

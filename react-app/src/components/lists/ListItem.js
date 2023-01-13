@@ -5,7 +5,7 @@ import { loadCardsThunk, addCardThunk } from '../../store/card';
 import { getListThunk, loadListsThunk, reorder, sort, updateListOrder } from '../../store/list';
 import Card from '../cards/Card';
 import SettingsList from './SettingsList';
-import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd'
+// import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd'
 
 function ListItem({list, boardId}) {
     const dispatch = useDispatch()
@@ -31,36 +31,36 @@ function ListItem({list, boardId}) {
       setErrors(errorsArr);
     }, [cardTitle]);
 
-    const onDragEnd = (result) => {
-      const { destination, source, draggableId } = result
+    // const onDragEnd = (result) => {
+    //   const { destination, source, draggableId } = result
 
-      const droppableIdStart = source.droppableId
-      const droppableIndexStart = source.index
-      const droppableIndexEnd = destination.index
+    //   const droppableIdStart = source.droppableId
+    //   const droppableIndexStart = source.index
+    //   const droppableIndexEnd = destination.index
 
-      if (!result.destination) return;
+    //   if (!result.destination) return;
 
-      if (
-          destination.droppableId === source.droppableId &&
-          destination.index === source.index
-      ) return;
+    //   if (
+    //       destination.droppableId === source.droppableId &&
+    //       destination.index === source.index
+    //   ) return;
 
-      const cardOrder = list.cards
-      console.log("this is cardOrder", cardOrder)
+    //   const cardOrder = list.cards
+    //   console.log("this is cardOrder", cardOrder)
       
-      cardOrder.splice(droppableIndexEnd, 0, cardOrder.splice(droppableIndexStart, 1)[0])
+    //   cardOrder.splice(droppableIndexEnd, 0, cardOrder.splice(droppableIndexStart, 1)[0])
       
-      const cardOrderId = cardOrder.map((card) => card.id)
+    //   const cardOrderId = cardOrder.map((card) => card.id)
 
-      const payload = {
-        card_order: cardOrderId
-      }
+    //   const payload = {
+    //     card_order: cardOrderId
+    //   }
 
-      dispatch(reorder(payload, listId))
+    //   dispatch(reorder(payload, listId))
 
-      // dispatch(updateListOrder(payload, listId))
+    //   // dispatch(updateListOrder(payload, listId))
     
-    }
+    // }
 
     useEffect(() => {
       dispatch(loadListsThunk(boardId))
@@ -143,13 +143,13 @@ function ListItem({list, boardId}) {
         ));
 
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
-      <Droppable droppableId={listId.toString()}>
-        {(provided) => (
+    // <DragDropContext onDragEnd={onDragEnd}>
+      // <Droppable droppableId={listId.toString()}>
+      //   {(provided) => (
           <div
             className="list-card-wrapper"
-            {...provided.droppableProps}
-            ref={provided.innerRef}
+            // {...provided.droppableProps}
+            // ref={provided.innerRef}
           >
             <span className="list-title-div">
               <h4 className="list-title">{list.title}</h4>
@@ -171,17 +171,18 @@ function ListItem({list, boardId}) {
             <div className="cards-wrapper">
               <ul className="card-ul-div">
                 {cardsArr?.map((card, index) => (
-                  <Draggable
-                    key={card.id}
-                    draggableId={card.id.toString()}
-                    index={index}
-                  >
-                    {(provided) => (
+                  // <Draggable
+                  //   key={card.id}
+                  //   draggableId={card.id.toString()}
+                  //   index={index}
+                  // >
+                    // {(provided) => (
                       <li
-                        className="card-item-div"
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        ref={provided.innerRef}
+                        className="card-item-div" 
+                        key = {card.id}
+                        // {...provided.draggableProps}
+                        // {...provided.dragHandleProps}
+                        // ref={provided.innerRef}
                       >
                         <Card
                           card={card}
@@ -190,21 +191,19 @@ function ListItem({list, boardId}) {
                           boardId={boardId}
                         />
                       </li>
-                    )}
-                  </Draggable>
-                ))}
+                    ))}
+                  {/* // </Draggable>
+                // ))} */}
                 <li className="add-card-li">
                   {/* conditional render var here */}
                   {createCard}
                 </li>
               </ul>
-              {provided.placeholder}
+              {/* {provided.placeholder} */}
             </div>
           </div>
         )}
-      </Droppable>
-    </DragDropContext>
-  );
-}
+      //   </Droppable>
+      // </DragDropContext>
 
 export default ListItem
