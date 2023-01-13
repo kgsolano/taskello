@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from flask_login import login_required
-from app.models import Card, db, User
-from app.forms import CardForm
+from app.models import Card, db, User, Activity
+from app.forms import CardForm, ActivityForm
 from .auth_routes import validation_errors_to_error_messages
 
 card_routes = Blueprint('cards', __name__)
@@ -52,3 +52,36 @@ def delete_card(cardId):
         db.session.commit()
         return {"message": "card was successfully deleted"}
     return {"error": "card does not exist"}, 404
+
+####### Activity Routes #######
+
+@card_routes.route('/<int:cardId>/activities')
+@login_required
+def activity_index(cardId):
+    """ 
+    Query for all activities for a card
+    """
+    activities = Activity.query.filter(Activity.cardId == cardId).all()
+    return {'activities': [activity.to_dict() for activity in activities]}
+
+@card_routes.route('/<int:cardId>/activities', methods=['POST'])
+@login_required
+def create_activity(cardId):
+    """ 
+    Create an activity
+    """
+    form = ActivityForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        data = form.data
+
+        new_activity = Activity(
+            comment=data['comment'],
+            userId=data['userId'],
+            cardId=cardId
+        )
+        db.session.add(new_activity)
+        db.session.commit()
+        return {'activity': new_activity.to_dict()}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401

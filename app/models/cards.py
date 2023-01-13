@@ -22,6 +22,9 @@ class Card(db.Model):
     list = db.relationship('List',
                             back_populates='cards')
     
+    actvity = db.relationship('Activity',
+                              back_populates='cards', lazy=False, cascade="all, delete")
+    
     def to_dict(self):
         return {
             'id': self.id,
@@ -31,4 +34,5 @@ class Card(db.Model):
             'listId': self.listId,
             'createdAt': json.dumps(self.createdAt, default=str),
             'updatedAt': json.dumps(self.createdAt, default=str),
+            'activities': [activity.to_dict() for activity in self.activities]
         }
