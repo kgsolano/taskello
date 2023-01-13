@@ -35,6 +35,25 @@ def update_list(listId):
         return {'list': list.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
+# @list_routes.route('/<int:listId>/reorder', methods=['PUT'])
+# @login_required
+# def reorder_list(listId):
+#     """"
+#     Reorder a list
+#     """
+    
+#     curr_list = List.query.get_or_404(listId)
+#     # print("!!!!!!!!~~~~~~~~~!!!!!!!", curr_list.cards)
+#     data = request.get_json()
+#     print("!!!!!!!@@@@@@@@@@@@@@@@@!!!!!!!!", data['card_order'])
+    
+#     curr_list.card_order = ",".join([(str(x)) for x in data['card_order']])
+#     print("~~~~~~~~~~~~~", curr_list.card_order)
+    
+#     db.session.commit()
+#     print("@@@@@@@@@@@ list.to_dict()", {'list': curr_list.to_dict()})
+#     return {'list': curr_list.to_dict()} # this could be problem
+
 @list_routes.route('<int:listId>', methods=['DELETE'])
 @login_required
 def delete_list(listId):
@@ -79,3 +98,17 @@ def create_card(listId):
         db.session.commit()
         return {'card': new_card.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+
+
+   # new_card_order = Card.query.get_or_404(data['cards'][0]['id'])
+    # print("~~~~~~~~~~~~~~", new_card)
+
+    # new_cards = []
+    # for i in range(len(curr_list.cards)):
+    #     new_card = Card.query.get_or_404(data['cards'][i]['id'])
+    #     new_cards.append(new_card)
+    # curr_list.cards = new_cards
+    # # list.cards = data['cards']
+    # print("############## list.cards", curr_list.cards)

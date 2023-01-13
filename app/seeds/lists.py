@@ -2,10 +2,10 @@ from app.models import db, List, environment, SCHEMA
 
 def seed_lists():
     # for each board to have a todo list
-    todo1 = List(title='Todos', boardId=1, userId=1)
-    todo2= List(title='Todos', boardId=2, userId=1)
-    todo3= List(title='Todos', boardId=3, userId=1)
-    todo4= List(title='Todos', boardId=4, userId=1)
+    todo1 = List(title='Todos', boardId=1, userId=1, card_order='')
+    todo2 = List(title='Todos', boardId=2, userId=1, card_order='')
+    todo3 = List(title='Todos', boardId=3, userId=1, card_order='')
+    todo4 = List(title='Todos', boardId=4, userId=1, card_order='')
     
     db.session.add_all([todo1, todo2, todo3, todo4])
     db.session.commit()
