@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import { loadActivitiesThunk } from '../../store/activity'
 import { loadCardsThunk, updateCardThunk } from '../../store/card'
 
 function CardModal({card, list, setShowModal}) {
@@ -9,9 +10,15 @@ function CardModal({card, list, setShowModal}) {
     const [editDescription, setEditDescription] = useState(false)
     const [description, setDescription] = useState('')
     const user = useSelector(state => state.session.user)
+    const activity = useSelector(state => state.activity)
     const cardId = card.id
     const listId = list.id
 
+    useEffect(() => {
+      dispatch(loadActivitiesThunk(cardId))
+    },[])
+
+    console.log("this is activity", activity)
 
 
 
