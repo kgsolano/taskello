@@ -9,7 +9,7 @@ function Card({card, list, listId, boardId}) {
   const [showModal, setShowModal] = useState(false)
   const dispatch = useDispatch()
   const cardId = card.id
-  console.log("this is card", card)
+  // console.log("this is card", card)
 
 
 

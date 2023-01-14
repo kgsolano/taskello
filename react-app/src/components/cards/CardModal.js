@@ -18,7 +18,7 @@ function CardModal({card, list, setShowModal}) {
       dispatch(loadActivitiesThunk(cardId))
     },[])
 
-    console.log("this is activity", activity)
+    console.log("this is activity", card.activities)
 
 
 

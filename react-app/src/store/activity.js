@@ -105,7 +105,8 @@ export default function activityReducer(state = initialState, action) {
     switch (action.type) {
         case LOAD_ACTIVITIES:
             const allActivities = {};
-            action.activities.forEach((activity) => {
+            console.log("this is action.activities", action.activities)
+            action.activities.activities.forEach((activity) => {
                 allActivities[activity.id] = activity;
             });
             return {
