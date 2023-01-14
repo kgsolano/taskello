@@ -22,6 +22,9 @@ class User(db.Model, UserMixin):
     
     cards = db.relationship('Card',
                             back_populates='user')
+    
+    activities = db.relationship('Activity',
+                                 back_populates='user')
     @property
     def password(self):
         return self.hashed_password

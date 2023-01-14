@@ -20,7 +20,7 @@ class List(db.Model):
     title = db.Column(db.String(255), nullable=False)
     boardId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('boards.id')), nullable=False)
     userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
-    card_order = db.Column(db.String, default="", nullable=False)
+    # card_order = db.Column(db.String, default="", nullable=False)
     
     user = db.relationship('User',
                             back_populates='lists')

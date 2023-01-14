@@ -3,6 +3,7 @@ from .users import seed_users, undo_users
 from .boards import seed_boards, undo_boards
 from .cards import seed_cards, undo_cards
 from .lists import seed_lists, undo_lists
+from .activities import seed_activities, undo_activities
 
 from app.models.db import db, environment, SCHEMA
 
@@ -23,11 +24,13 @@ def seed():
         undo_cards()
         undo_lists()
         undo_boards()
+        undo_activities()
     seed_users()
     # Add other seed functions here
     seed_boards()
     seed_lists()
     seed_cards()
+    seed_activities()
 
 
 # Creates the `flask seed undo` command
@@ -38,3 +41,4 @@ def undo():
     undo_lists()
     undo_cards()
     undo_boards()
+    undo_activities()

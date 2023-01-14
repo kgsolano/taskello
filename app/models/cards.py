@@ -22,8 +22,8 @@ class Card(db.Model):
     list = db.relationship('List',
                             back_populates='cards')
     
-    actvity = db.relationship('Activity',
-                              back_populates='cards', lazy=False, cascade="all, delete")
+    activities = db.relationship('Activity',
+                              back_populates='card', lazy=False, cascade="all, delete")
     
     def to_dict(self):
         return {
