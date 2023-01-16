@@ -104,16 +104,17 @@ const initialState = {};
 export default function activityReducer(state = initialState, action) {
     switch (action.type) {
         case LOAD_ACTIVITIES:
-            const allActivities = {};
-            console.log("this is action.activities", action.activities)
-            action.activities.activities.forEach((activity) => {
-                allActivities[activity.id] = activity;
-            });
-            return {
+            // const allActivities = {...state};
+            console.log("this is load activities", action.activities.activities)
+            // action.activities.activities.forEach((activity) => {
+            //     allActivities[activity.id] = activity;
+            // });
+            const allActivities = normalizeArray(action.activities.activities);
+            return {...state,
                 ...allActivities,
-                ...state,
             };
         case ADD_ACTIVITY:
+            // console.log("this is add activity", action.activity)
             if (!state[action.activity.id]) {
                 const newState = {
                     ...state,
