@@ -117,35 +117,41 @@ function CardModal({card, list, setShowModal}) {
       </div>
       <div className="activity-area-div">
         <div className="activity-title">
-          <i class="fa-solid fa-list-timeline title-card-img"></i>
-          <span>
-            <h4>Activity</h4>
+          <i class="fa-solid fa-list-ul title-card-img"></i>
+          <span className='activity-text-div'>
+            <h4 className='activity-text'>Activity</h4>
           </span>
         </div>
         <div className="activity-area">
           <div className="comment-form-div">
-            <div className="user-initial">{userInitial}</div>
+            <div className="user-initial user-circle">{userInitial}</div>
             <form className="comment-form" onSubmit={handleActivitySubmit}>
               <input
-                className="modal-input"
+                className="comment-input"
                 type="textarea"
                 placeholder="Write a comment..."
                 value={addComment}
                 onChange={(e) => setAddComment(e.target.value)}
               />
-              <button className="modal-submit-btn" type="submit">
+              <button className="comment-submit-btn" type="submit">
                 Save
               </button>
             </form>
           </div>
           <div className="activity-list">
-            <ul className='activity-list-ul'>
-              {comments && comments.map((comment) => (
-                <li className="activity-comment">
-                    <ActivityItem key={comment.id} comment={comment} user={user} userInitial={userInitial} />
+            <ul className="activity-list-ul">
+              {comments &&
+                comments.map((comment) => (
+                  <li className="activity-comment">
+                    <ActivityItem
+                      key={comment.id}
+                      comment={comment}
+                      user={user}
+                      userInitial={userInitial}
+                    />
                   </li>
-              ))}
-              </ul>
+                ))}
+            </ul>
           </div>
         </div>
       </div>

@@ -660,6 +660,19 @@
     align-items: center;
 }
 
+.card-icons {
+    display: flex;
+    flex-direction: row;
+}
+
+.fa-solid {
+    margin-right: 10px;
+}
+
+/* .comment-icon {
+    margin: 0 10px;
+} */
+
 /* CARD MODAL */
 .card-modal-div {
     /* border: 1px solid green; */
@@ -737,9 +750,9 @@
    align-content: flex-start;
 }
 
-/* .modal-input {
-    width: 45px;
-} */
+.modal-input {
+    width: 400px;
+}
 
 .modal-submit-btn {
     align-self: center;
@@ -766,4 +779,100 @@
     color: red;
     font-size: 0.75rem;
     padding: 5px;
+}
+
+/* Activities/Comments */
+
+.activity-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.activity-text {
+    margin: 0 0 0 15px;
+}
+
+.activity-area {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-form-div {
+    display: flex;
+    flex-direction: row;
+}
+
+.comment-form {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.user-initial {
+    color: white;
+    margin: 9px 10px 5px 0;
+}
+
+.comment-input {
+    width: 95%;
+}
+
+.comment-submit-btn {
+    /* align-self: center;
+    margin-top: 10px;
+    background-color: #0979c0;
+    color: white;
+    width: 60px;
+    height: 47px;
+    border: none;
+    border-radius: 5px;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    padding: 15px 0; */
+    visibility: hidden;
+}
+
+.actiity-list {
+    border: 1px solid red;
+    height: 50px;
+    overflow-y: scroll;
+}
+
+.activity-list-ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 0;
+}
+
+.activity-comment {
+    list-style: none;
+}
+
+.comment-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 5px 0;
+    height: 40px;
+}
+
+.comment-text {
+    margin: 0 0 0 43px;
+    padding: 7px;
+    background-color: #f4f5f7f0;
+    border-radius: 5px;
+    box-shadow: inset 0 0 0 2px #dfe1e6;
+}
+
+.delete-comment {
+    color: #b3b9c6;
+    margin-left: 43px;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: .75rem;
 }

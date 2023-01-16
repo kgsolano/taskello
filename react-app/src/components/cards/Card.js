@@ -34,8 +34,10 @@ function Card({card, list, listId, boardId}) {
         </p>
         <i class="fa-sharp fa-solid fa-square-minus" onClick={() => {handleDelete(cardId)}}></i>
       </div>
-      
-      {card.description && <i class="fa-solid fa-align-left"></i>}
+      <div className='card-icons'>
+        {card.description && <i class="fa-solid fa-align-left"></i>}
+        {card.activities.length ? <div className='comment-icon'><i class="fa-regular fa-comment"></i> {card.activities.length} </div> : null}
+      </div>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
         <CardModal card={card} list={list} setShowModal={setShowModal} />
