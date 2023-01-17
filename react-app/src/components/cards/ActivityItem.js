@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteActivityThunk, loadActivitiesThunk } from '../../store/activity'
 
@@ -7,7 +7,13 @@ function ActivityItem({comment, user, userInitial}) {
     const cardId = comment.cardId
     const dispatch = useDispatch()
 
+    // useEffect(() => {
+    //     dispatch(loadActivitiesThunk(cardId))
+    // },[cardId])
+
     const handleDelete = async (commentId) => {
+        // e.preventDefault()
+
         if (commentId){
             await dispatch(deleteActivityThunk(comment.id))
             await dispatch(loadActivitiesThunk(cardId))

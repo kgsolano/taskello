@@ -12,7 +12,8 @@ function CardModal({card, list, setShowModal}) {
     const [description, setDescription] = useState('')
     const [addComment, setAddComment] = useState('')
     const user = useSelector(state => state.session.user)
-    const activity = useSelector(state => state.activity)
+    const activityObj = useSelector(state => state.activity)
+    const activity = Object.values(activityObj)
     const cardId = card.id
     const listId = list.id
     const comments = card.activities
@@ -21,8 +22,9 @@ function CardModal({card, list, setShowModal}) {
 
     useEffect(() => {
       dispatch(loadActivitiesThunk(cardId))
-    },[cardId])
+    },[comments])
 
+    console.log("this is activity state", activity)
     console.log("this is comments", comments)
 
 
@@ -140,8 +142,8 @@ function CardModal({card, list, setShowModal}) {
           </div>
           <div className="activity-list">
             <ul className="activity-list-ul">
-              {comments &&
-                comments.map((comment) => (
+              {activity &&
+                activity.map((comment) => (
                   <li className="activity-comment">
                     <ActivityItem
                       key={comment.id}
