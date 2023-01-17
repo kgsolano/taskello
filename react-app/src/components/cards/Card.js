@@ -23,7 +23,7 @@ function Card({card, list, listId, boardId}) {
 
   useEffect(() => {
     dispatch(loadCardsThunk(listId))
-  }, [dispatch, listId]);
+  }, [dispatch, card]);
     
   return (
       <div className="card-item">

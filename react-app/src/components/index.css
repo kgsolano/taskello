@@ -69,16 +69,21 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     height: 31px;
     width: 12%;
     margin-left: 0;
     /* border: 1px solid red; */
 }
 
-/* .navbar-left h3 {
+.navbar-left h2 {
     cursor: pointer;
-} */
+    margin-right: 10px;
+}
+
+.navbar-left a {
+    margin: 0 5px;
+}
 
 /* .navbar-icon {
     border: 1px solid red;
@@ -369,6 +374,10 @@
 .add-board-form {
     display: flex;
     flex-direction: column;
+}
+
+.add-board-form input {
+    width: 400px;
 }
 
 .add-modal-text {
@@ -875,4 +884,8 @@
     cursor: pointer;
     text-decoration: underline;
     font-size: .75rem;
+}
+
+.delete-comment:hover {
+    color: #70829e;
 }
