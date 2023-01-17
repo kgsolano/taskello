@@ -9,8 +9,11 @@ function Card({card, list, listId, boardId}) {
   const [showModal, setShowModal] = useState(false)
   const dispatch = useDispatch()
   const cardId = card.id
-  // console.log("this is card", card)
-
+  const commentArr = card.activities
+ 
+  // useEffect(() => {
+  //   console.log(commentArr.length)
+  // },[commentArr])
 
 
   const handleDelete = async (cardId) => {
@@ -23,7 +26,9 @@ function Card({card, list, listId, boardId}) {
 
   useEffect(() => {
     dispatch(loadCardsThunk(listId))
-  }, [dispatch, card]);
+  }, [dispatch, commentArr]);
+
+  // console.log("this is commentArr", commentArr)
     
   return (
       <div className="card-item">
@@ -36,7 +41,7 @@ function Card({card, list, listId, boardId}) {
       </div>
       <div className='card-icons'>
         {card.description && <i class="fa-solid fa-align-left"></i>}
-        {card.activities.length ? <div className='comment-icon'><i class="fa-regular fa-comment"></i> {card.activities.length} </div> : null}
+        {commentArr.length ? <div className='comment-icon'><i class="fa-regular fa-comment"></i> {commentArr.length} </div> : null}
       </div>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
