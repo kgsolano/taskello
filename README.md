@@ -1,6 +1,6 @@
 # Taskello Capstone Project
 
-Taskello is a trello clone designed to emulate trello's todo list functionality. Users should be able to create their own boards, lists, and cards to organize action items for productivity. The website can be found [here](https://taskello.onrender.com/)
+Taskello is a trello clone designed to emulate trello's todo list functionality. Users should be able to create their own boards, lists, and cards to organize action items for productivity.
 
 ## Getting started
 1. Clone this repository (only this branch)
